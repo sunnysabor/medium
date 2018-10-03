@@ -28,6 +28,28 @@
         </if>
     </select>
 
+
+    <select id="list" resultType="com.bootdo.common.domain.CommentDO">
+        select * from sys_comment
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="fileId != null and fileId != ''">and url = #{fileId}</if>
+            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
     <select id="count" resultType="int">
         select count(*) from sys_comment
         <where>
