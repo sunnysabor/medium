@@ -1,6 +1,7 @@
 package com.bootdo.common.service.impl;
 
 import com.bootdo.common.dao.CommentDao;
+import com.bootdo.common.domain.CommentDO;
 import com.bootdo.common.domain.ConsultDO;
 import com.bootdo.common.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ public class CommentServiceImpl implements CommentService {
     private CommentDao commentDao;
 
     @Override
-    public ConsultDO get(Long id) {
+    public CommentDO get(Long id) {
         return commentDao.get(id);
     }
 
     @Override
-    public List<ConsultDO> list(Map<String, Object> map) {
+    public List<CommentDO> list(Map<String, Object> map) {
         return commentDao.list(map);
     }
 
@@ -30,13 +31,13 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public int save(ConsultDO sysFile) {
-        return commentDao.save(sysFile);
+    public int save(CommentDO comment) {
+        return commentDao.save(comment);
     }
 
     @Override
-    public int update(ConsultDO sysFile) {
-        return commentDao.update(sysFile);
+    public int update(CommentDO comment) {
+        return commentDao.update(comment);
     }
 
     @Override

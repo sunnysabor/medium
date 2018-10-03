@@ -14,9 +14,9 @@ public interface CommentService {
 
     int count(Map<String, Object> map);
 
-    int save(CommentDO sysFile);
+    int save(CommentDO comment);
 
-    int update(CommentDO sysFile);
+    int update(CommentDO comment);
 
     int remove(Long id);
 
