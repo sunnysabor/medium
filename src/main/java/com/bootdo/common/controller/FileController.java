@@ -7,6 +7,7 @@ import com.bootdo.common.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -76,7 +77,13 @@ public class FileController extends BaseController {
      */
     @ResponseBody
     @PostMapping("/save")
-    public R save(FileDO sysFile) {
+    public R save(FileDO sysFile) throws Exception {
+        if (StringUtils.isEmpty(sysFile.getUserId())) {
+            if (StringUtils.isEmpty(getUserId()))
+                throw new Exception("获取用户ID为空");
+            sysFile.setUserId(getUserId());
+        }
+        sysFile.setStatus("toAudit");
         if (sysFileService.save(sysFile) > 0) {
             return R.ok();
         }
