@@ -47,6 +47,14 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    public int updateStatus(Long id, String status) {
+        FileDO fileDO = new FileDO();
+        fileDO.setId(id);
+        fileDO.setStatus(status);
+        return sysFileMapper.updateStatus(fileDO);
+    }
+
+    @Override
     public int remove(Long id) {
         return sysFileMapper.remove(id);
     }

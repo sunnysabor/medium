@@ -63,6 +63,15 @@
         where id = #{id}
     </update>
 
+    <update id="update" parameterType="com.bootdo.common.domain.FileDO">
+        update sys_file
+        <set>
+            <if test="status != null">`status` = #{status}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
     <delete id="remove">
 		delete from sys_file where id = #{value}
 	</delete>

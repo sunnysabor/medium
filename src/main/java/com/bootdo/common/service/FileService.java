@@ -24,6 +24,8 @@ public interface FileService {
 
     int update(FileDO sysFile);
 
+    int updateStatus(Long id, String status);
+
     int remove(Long id);
 
     int batchRemove(Long[] ids);

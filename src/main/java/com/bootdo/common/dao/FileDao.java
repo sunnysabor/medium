@@ -26,6 +26,8 @@ public interface FileDao {
 
     int update(FileDO file);
 
+    int updateStatus(FileDO file);
+
     int remove(Long id);
 
     int batchRemove(Long[] ids);

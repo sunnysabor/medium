@@ -94,6 +94,15 @@ public class FileController extends BaseController {
     }
 
     /**
+     * 修改多媒体状态（待审核 审核不通过 审核通过）
+     */
+    @GetMapping("/{id}/{status}")
+    public R updateStatus(@PathVariable Long id, @PathVariable String status) {
+        sysFileService.updateStatus(id, status);
+        return R.ok();
+    }
+
+    /**
      * 删除
      */
     @PostMapping("/remove")

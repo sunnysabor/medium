@@ -21,7 +21,16 @@ public class FileDO implements Serializable {
     private String url;
     // 创建时间
     private Date createDate;
+    //文件状态
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public FileDO() {
         super();
