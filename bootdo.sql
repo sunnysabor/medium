@@ -133,3 +133,13 @@ CREATE TABLE `sys_collection` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=609 DEFAULT CHARSET=utf8 COMMENT='收藏记录';
+
+DROP TABLE IF EXISTS `sys_comment`;
+CREATE TABLE `sys_comment` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
+  `file_id` bigint(20) DEFAULT NULL COMMENT '多媒体id',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+    `content` varchar(5000) DEFAULT NULL COMMENT '内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=609 DEFAULT CHARSET=utf8 COMMENT='评论';
