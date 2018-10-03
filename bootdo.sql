@@ -86,12 +86,14 @@ CREATE TABLE `sys_menu` (
 INSERT INTO `sys_menu` VALUES ('1', '0', '用户信息', '', '', '0', 'fa fa-bars', '1', '2017-08-09 22:49:47', null);
 INSERT INTO `sys_menu` VALUES ('11', '1', '用户管理', 'sys/user/', 'sys:user:user', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
 INSERT INTO `sys_menu` VALUES ('12', '1', '充值管理', 'sys/recharge/', 'sys:recharge:recharge', '2', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
--- INSERT INTO `sys_menu` VALUES ('2', '0', '多媒体管理', '', '', '0', 'fa fa-bars', '2', '2017-08-09 22:49:47', null);
+INSERT INTO `sys_menu` VALUES ('2', '0', '多媒体管理', '', '', '0', 'fa fa-bars', '2', '2017-08-09 22:49:47', null);
 INSERT INTO `sys_menu` VALUES ('21', '2', '多媒体管理', '/common/sysFile','common:sysFile:sysFile', '1', 'fa fa-folder-open', '0', '2017-08-10 14:12:11', null);
 INSERT INTO `sys_menu` VALUES ('22', '2', '评论管理', 'sys/recharge/', 'sys:recharge:recharge', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
 INSERT INTO `sys_menu` VALUES ('23', '2', '收藏管理', 'sys/recharge/', 'sys:recharge:recharge', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
-INSERT INTO `sys_menu` VALUES ('3', '0', '征集信息管理', '', '', '0', 'fa fa-bars', '1', '2017-08-09 22:49:47', null);
-INSERT INTO `sys_menu` VALUES ('31', '1', '征集表', 'sys/user/', 'sys:user:user', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
+INSERT INTO `sys_menu` VALUES ('3', '0', '征集信息管理', '', '', '0', 'fa fa-bars',
+ '3', '2017-08-09 22:49:47', null);
+INSERT INTO `sys_menu` VALUES ('31', '3', '征集表', 'sys/user/',
+'sys:user:user', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
 
 DROP TABLE IF EXISTS `sys_log`;
 CREATE TABLE `sys_log` (

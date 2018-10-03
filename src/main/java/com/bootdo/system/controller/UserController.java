@@ -47,8 +47,6 @@ public class UserController extends BaseController {
     @Log("添加用户")
     @GetMapping("/add")
     String add(Model model) {
-//		List<RoleDO> roles = roleService.list();
-//		model.addAttribute("roles", roles);
         return prefix + "/add";
     }
 
@@ -57,8 +55,6 @@ public class UserController extends BaseController {
     String edit(Model model, @PathVariable("id") Long id) {
         UserDO userDO = userService.get(id);
         model.addAttribute("user", userDO);
-//		List<RoleDO> roles = roleService.list(id);
-//		model.addAttribute("roles", roles);
         return prefix + "/edit";
     }
 
@@ -190,8 +186,6 @@ public class UserController extends BaseController {
     String personal(Model model) {
         UserDO userDO = userService.get(getUserId());
         model.addAttribute("user", userDO);
-//		model.addAttribute("hobbyList",dictService.getHobbyList(userDO));
-//		model.addAttribute("sexList",dictService.getSexList());
         return prefix + "/personal";
     }
 
