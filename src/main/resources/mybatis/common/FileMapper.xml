@@ -4,11 +4,11 @@
 <mapper namespace="com.bootdo.common.dao.FileDao">
 
     <select id="get" resultType="com.bootdo.common.domain.FileDO">
-		select `id`,`type`,`url`,`create_date` from sys_file where id = #{value}
+		select * from sys_file where id = #{value}
 	</select>
 
     <select id="list" resultType="com.bootdo.common.domain.FileDO">
-        select `id`,`type`,`url`,`create_date` from sys_file
+        select * from sys_file
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="type != null and type != ''">and type = #{type}</if>
@@ -43,13 +43,17 @@
 		(
 			`type`, 
 			`url`, 
-			`create_date`
+			`create_date`,
+			`status`,
+			`user_id`
 		)
 		values
 		(
 			#{type}, 
 			#{url}, 
-			#{createDate}
+			#{createDate},
+			#{status},
+			#{userId}
 		)
 	</insert>
 
@@ -63,7 +67,7 @@
         where id = #{id}
     </update>
 
-    <update id="update" parameterType="com.bootdo.common.domain.FileDO">
+    <update id="updateStatus" parameterType="com.bootdo.common.domain.FileDO">
         update sys_file
         <set>
             <if test="status != null">`status` = #{status}</if>
