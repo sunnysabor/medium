@@ -32,8 +32,8 @@
         select count(*) from sys_comment
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="userId != null and userId != ''">and type = #{type}</if>
-            <if test="fileId != null and fileId != ''">and url = #{url}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
             <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
         </where>
     </select>
