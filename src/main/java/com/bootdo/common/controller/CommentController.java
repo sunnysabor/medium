@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/common/comment")
-public class CommentContrller extends BaseController {
+public class CommentController extends BaseController {
 
     @Autowired
     private CommentService commentService;
@@ -53,14 +53,7 @@ public class CommentContrller extends BaseController {
         return "common/comment/edit";
     }
 
-    /**
-     * 信息
-     */
-    @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Long id) {
-        CommentDO comment = commentService.get(id);
-        return R.ok().put("comment", comment);
-    }
+
 
     /**
      * 保存
@@ -79,14 +72,17 @@ public class CommentContrller extends BaseController {
         return R.error();
     }
 
+
     /**
      * 修改
      */
     @RequestMapping("/update")
     public R update(@RequestBody CommentDO comment) {
-        commentService.update(comment);
+        if (commentService.update(comment) > 0) {
+            return R.ok();
+        }
+        return R.error("修改失败");
 
-        return R.ok();
     }
 
 

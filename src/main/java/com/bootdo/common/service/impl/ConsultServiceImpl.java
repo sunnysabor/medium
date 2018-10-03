@@ -1,51 +1,52 @@
 package com.bootdo.common.service.impl;
 
-import com.bootdo.common.dao.CommentDao;
+import com.bootdo.common.dao.ConsultDao;
 import com.bootdo.common.domain.ConsultDO;
-import com.bootdo.common.service.CommentService;
+import com.bootdo.common.service.ConsultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 @Service
-public class CommentServiceImpl implements CommentService {
+public class ConsultServiceImpl implements ConsultService {
 
     @Autowired
-    private CommentDao commentDao;
+    private ConsultDao ConsultDao;
 
     @Override
     public ConsultDO get(Long id) {
-        return commentDao.get(id);
+        return ConsultDao.get(id);
     }
 
     @Override
     public List<ConsultDO> list(Map<String, Object> map) {
-        return commentDao.list(map);
+        return ConsultDao.list(map);
     }
 
     @Override
     public int count(Map<String, Object> map) {
-        return commentDao.count(map);
+        return ConsultDao.count(map);
     }
 
     @Override
     public int save(ConsultDO sysFile) {
-        return commentDao.save(sysFile);
+        return ConsultDao.save(sysFile);
     }
 
     @Override
     public int update(ConsultDO sysFile) {
-        return commentDao.update(sysFile);
+        return ConsultDao.update(sysFile);
     }
 
     @Override
     public int remove(Long id) {
-        return commentDao.remove(id);
+        return ConsultDao.remove(id);
     }
 
     @Override
     public int batchRemove(Long[] ids) {
-        return commentDao.batchRemove(ids);
+        return ConsultDao.batchRemove(ids);
     }
 }

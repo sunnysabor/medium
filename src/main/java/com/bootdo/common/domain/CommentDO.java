@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class CommentDO implements Serializable {
 
+    private static final long serialVersionUID = 4985702154944008806L;
     private Long id;
     private Long userId;
     private Long fileId;
