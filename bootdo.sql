@@ -91,7 +91,9 @@ INSERT INTO `sys_menu` VALUES ('12', '1', '充值管理', 'sys/recharge/', 'sys:
 INSERT INTO `sys_menu` VALUES ('2', '0', '多媒体管理', '', '', '0', 'fa fa-bars', '2', '2017-08-09 22:49:47', null);
 INSERT INTO `sys_menu` VALUES ('21', '2', '多媒体管理', '/common/sysFile','common:sysFile:sysFile', '1', 'fa fa-folder-open', '0', '2017-08-10 14:12:11', null);
 INSERT INTO `sys_menu` VALUES ('22', '2', '评论管理', 'sys/recharge/', 'sys:recharge:recharge', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
-INSERT INTO `sys_menu` VALUES ('23', '2', '收藏管理', 'sys/recharge/', 'sys:recharge:recharge', '1', 'fa fa-user', '0', '2017-08-10 14:12:11', null);
+INSERT INTO `sys_menu` VALUES ('23', '2', '收藏管理', 'common/collection',
+'common:collection:collection', '1', 'fa fa-user', '0', '2017-08-10 14:12:11',
+null);
 INSERT INTO `sys_menu` VALUES ('3', '0', '征集信息管理', '', '', '0', 'fa fa-bars',
  '3', '2017-08-09 22:49:47', null);
 INSERT INTO `sys_menu` VALUES ('31', '3', '征集表', 'sys/user/',
@@ -122,3 +124,12 @@ CREATE TABLE `sys_recharge` (
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=609 DEFAULT CHARSET=utf8 COMMENT='充值记录';
+
+DROP TABLE IF EXISTS `sys_collection`;
+CREATE TABLE `sys_collection` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
+  `file_id` varchar(50) DEFAULT NULL COMMENT '多媒体id',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=609 DEFAULT CHARSET=utf8 COMMENT='收藏记录';

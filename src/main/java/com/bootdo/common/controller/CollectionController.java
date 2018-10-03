@@ -41,7 +41,7 @@ public class CollectionController extends BaseController {
     private String prefix = "common/collection";
 
     @GetMapping("")
-    String recharge(Model model) {
+    String collection(Model model) {
         return prefix + "/collection";
     }
 

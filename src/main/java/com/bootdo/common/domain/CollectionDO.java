@@ -31,7 +31,7 @@ public class CollectionDO implements Serializable {
     // 多媒体id
     private Long fileId;
     //收藏时间
-    private Date createDate;
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -57,11 +57,11 @@ public class CollectionDO implements Serializable {
         this.fileId = fileId;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
