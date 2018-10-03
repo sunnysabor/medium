@@ -4,16 +4,20 @@
 <mapper namespace="com.bootdo.common.dao.ConsultDao">
 
     <select id="get" resultType="com.bootdo.common.domain.ConsultDO">
-		select * from sys_comment where id = #{value}
+		select
+		 `id`,`user_id`,`content`,`readed`,`gooded`,`create_time` from
+		sys_consult where id
+		 = #{value}
 	</select>
 
     <select id="list" resultType="com.bootdo.common.domain.ConsultDO">
-        select * from sys_comment
+        select `id`,`user_id`,`content`,`readed`,`gooded`,`create_time` from sys_consult
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="content != null and content != ''">and content = #{content}</if>
-            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="createTime != null and createTime != ''">and create_time =
+                #{createTime}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -29,37 +33,38 @@
     </select>
 
     <select id="count" resultType="int">
-        select count(*) from sys_comment
+        select count(*) from sys_consult
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="content != null and content != ''">and content = #{content}</if>
-            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="createTime != null and createTime != ''">and create_time
+                = #{createTime}</if>
         </where>
     </select>
 
     <insert id="save" parameterType="com.bootdo.common.domain.ConsultDO" useGeneratedKeys="true" keyProperty="id">
-		insert into sys_comment
+		insert into sys_consult
 		(
 			`user_id`,
-			`create_date`,
+			`create_time`,
 			`content`
 		)
 		values
 		(
 			#{userId},
-			#{createDate},
+			#{createTime},
 			#{content}
 		)
 	</insert>
 
     <update id="update" parameterType="com.bootdo.common.domain.ConsultDO">
-        update sys_comment
+        update sys_consult
         <set>
             <if test="userId != null">`user_id` = #{userId},</if>
             <if test="gooded != null">`gooded` = #{gooded},</if>
             <if test="readed != null">`readed` = #{readed},</if>
-            <if test="createDate != null">`create_date` = #{createDate}</if>
+            <if test="createTime != null">`create_time` = #{createTime}</if>
             <if test="content != null">`content` = #{content}</if>
         </set>
         where id = #{id}
@@ -67,11 +72,11 @@
 
 
     <delete id="remove">
-		delete from sys_comment where id = #{value}
+		delete from sys_consult where id = #{value}
 	</delete>
 
     <delete id="batchRemove">
-        delete from sys_comment where id in
+        delete from sys_consult where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

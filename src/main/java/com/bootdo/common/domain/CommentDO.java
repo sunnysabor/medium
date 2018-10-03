@@ -10,7 +10,7 @@ public class CommentDO implements Serializable {
     private Long userId;
     private Long fileId;
     private String content;
-    private Date createDate;
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -44,11 +44,11 @@ public class CommentDO implements Serializable {
         this.content = content;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

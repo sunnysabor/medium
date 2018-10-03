@@ -6,13 +6,13 @@ import java.util.Date;
 public class ConsultDO implements Serializable {
 
     private static final long serialVersionUID = -4275937768699497750L;
+
     private Long id;
     private Long userId;
-    private Date createDate;
     private String content;
     private Long readed;
     private Long gooded;
-
+    private Date createTime;
     public Long getId() {
         return id;
     }
@@ -29,12 +29,12 @@ public class ConsultDO implements Serializable {
         this.userId = userId;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getContent() {

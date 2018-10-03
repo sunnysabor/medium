@@ -4,36 +4,18 @@
 <mapper namespace="com.bootdo.common.dao.CommentDao">
 
     <select id="get" resultType="com.bootdo.common.domain.CommentDO">
-		select * from sys_comment where id = #{value}
+		select `id`,`user_id`,`file_id`,`content`, `create_time` from
+		sys_comment
+		where id =
+		#{value}
 	</select>
 
     <select id="list" resultType="com.bootdo.common.domain.CommentDO">
-        select * from sys_comment
+        select `id`,`user_id`,`file_id`,`content`, `create_time` from
+        sys_comment
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="userId != null and userId != ''">and type = #{userId}</if>
-            <if test="fileId != null and fileId != ''">and url = #{fileId}</if>
-            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
-        </where>
-        <choose>
-            <when test="sort != null and sort.trim() != ''">
-                order by ${sort} ${order}
-            </when>
-            <otherwise>
-                order by id desc
-            </otherwise>
-        </choose>
-        <if test="offset != null and limit != null">
-            limit #{offset}, #{limit}
-        </if>
-    </select>
-
-
-    <select id="list" resultType="com.bootdo.common.domain.CommentDO">
-        select * from sys_comment
-        <where>
-            <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="fileId != null and fileId != ''">and url = #{fileId}</if>
             <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
         </where>
@@ -65,14 +47,14 @@
 		(
 			`user_id`,
 			`file_id`,
-			`create_date`,
+			`create_time`,
 			`content`
 		)
 		values
 		(
 			#{userId},
 			#{fileId},
-			#{createDate},
+			#{createTime},
 			#{content}
 		)
 	</insert>
@@ -82,7 +64,7 @@
         <set>
             <if test="userId != null">`user_id` = #{userId},</if>
             <if test="fileId != null">`file_id` = #{fileId},</if>
-            <if test="createDate != null">`create_date` = #{createDate}</if>
+            <if test="createTime != null">`create_time` = #{createTime}</if>
             <if test="content != null">`content` = #{content}</if>
         </set>
         where id = #{id}
