@@ -13,6 +13,7 @@ package com.bootdo.common.controller;
 import com.bootdo.common.annotation.Log;
 import com.bootdo.common.config.Constant;
 import com.bootdo.common.domain.CollectionDO;
+import com.bootdo.common.domain.CollectionRelation;
 import com.bootdo.common.service.CollectionService;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
@@ -26,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈收藏表〉
  *
  * @author jerry
@@ -50,7 +51,8 @@ public class CollectionController extends BaseController {
     PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
         Query query = new Query(params);
-        List<CollectionDO> collectionDOList = collectionService.list(query);
+        List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
+        //  List<CollectionDO> collectionDOList = collectionService.list(query);
         int total = collectionService.count(query);
         PageUtils pageUtil = new PageUtils(collectionDOList, total);
         return pageUtil;

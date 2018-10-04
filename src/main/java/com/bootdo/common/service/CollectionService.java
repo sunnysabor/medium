@@ -11,13 +11,14 @@
 package com.bootdo.common.service;
 
 import com.bootdo.common.domain.CollectionDO;
+import com.bootdo.common.domain.CollectionRelation;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈收藏的service〉
  *
  * @author jerry
@@ -29,6 +30,9 @@ public interface CollectionService {
     CollectionDO get(Long id);
 
     List<CollectionDO> list(Map<String, Object> map);
+
+    List<CollectionRelation> listCollectionRelation(Map<String, Object> map);
+
 
     int count(Map<String, Object> map);
 

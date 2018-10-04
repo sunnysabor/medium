@@ -1,6 +1,7 @@
 package com.bootdo.common.controller;
 
 import com.bootdo.common.domain.CommentDO;
+import com.bootdo.common.domain.CommentRelation;
 import com.bootdo.common.service.CommentService;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
@@ -35,7 +36,8 @@ public class CommentController extends BaseController {
     public PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
         Query query = new Query(params);
-        List<CommentDO> commentList = commentService.list(query);
+        //  List<CommentDO> commentList = commentService.list(query);
+        List<CommentRelation> commentList = commentService.listCommentRelation(query);
         int total = commentService.count(query);
         PageUtils pageUtils = new PageUtils(commentList, total);
         return pageUtils;
@@ -52,7 +54,6 @@ public class CommentController extends BaseController {
         model.addAttribute("comment", comment);
         return "common/comment/edit";
     }
-
 
 
     /**

@@ -1,6 +1,7 @@
 package com.bootdo.common.controller;
 
 import com.bootdo.common.domain.ConsultDO;
+import com.bootdo.common.domain.ConsultRelation;
 import com.bootdo.common.service.ConsultService;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
@@ -35,7 +36,8 @@ public class ConsultController extends BaseController {
     public PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
         Query query = new Query(params);
-        List<ConsultDO> consultList = consultService.list(query);
+        //List<ConsultDO> consultList = consultService.list(query);
+        List<ConsultRelation> consultList = consultService.listConsultRelation(query);
         int total = consultService.count(query);
         PageUtils pageUtils = new PageUtils(consultList, total);
         return pageUtils;
@@ -54,7 +56,7 @@ public class ConsultController extends BaseController {
     }
 
     /**
-     * 信息
+     * 查看
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id) {
@@ -65,7 +67,7 @@ public class ConsultController extends BaseController {
         if (consultService.update(consult) > 1) {
             return R.ok().put("consult", consult);
         }
-        return R.error("点赞失败");
+        return R.error();
     }
 
     /**

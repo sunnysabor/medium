@@ -1,6 +1,7 @@
 package com.bootdo.common.dao;
 
 import com.bootdo.common.domain.ConsultDO;
+import com.bootdo.common.domain.ConsultRelation;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface ConsultDao {
     ConsultDO get(Long id);
 
     List<ConsultDO> list(Map<String, Object> map);
+
+    List<ConsultRelation> listConsultRelation(Map<String, Object> map);
 
     int count(Map<String, Object> map);
 

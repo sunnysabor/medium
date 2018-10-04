@@ -65,4 +65,26 @@
         </foreach>
     </delete>
 
+
+    <select id="listCollectionRelation" resultType="com.bootdo.common.domain.CollectionRelation">
+        select c.*,f.url as file_url,u.name as user_name from sys_collection c, sys_file f,sys_user u
+        <where>
+            c.file_id=f.id
+            and c.user_id=u.user_id
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="user_id != null and user_id != ''">and user_id = #{user_id}</if>
+            <if test="file_id != null and file_id != ''">and file_id = #{file_id}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
 </mapper>

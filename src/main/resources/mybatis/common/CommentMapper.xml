@@ -15,9 +15,9 @@
         sys_comment
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="userId != null and userId != ''">and type = #{userId}</if>
-            <if test="fileId != null and fileId != ''">and url = #{fileId}</if>
-            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -38,7 +38,7 @@
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
-            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
         </where>
     </select>
 
@@ -83,18 +83,28 @@
     </delete>
 
 
-    <select id="getClass" resultMap="CommentResultMap">
-         select * from system_comment c, sys_file f,system_user u where c.file_id=t.id and c.user_id=u.id
-         and c.c.id=#{id}
-     </select>
-    <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
-    <resultMap type="me.gacl.domain.Classes" id="ClassResultMap">
-        <id property="id" column="id"/>
-        <result property="name" column="c_name"/>
-        <association property="teacher" javaType="me.gacl.domain.Teacher">
-            <id property="id" column="t_id"/>
-            <result property="name" column="t_name"/>
-        </association>
-    </resultMap>
+    <select id="listCommentRelation" resultType="com.bootdo.common.domain.CommentRelation">
+        select c.*,f.url as file_url,u.name as user_name from sys_comment c, sys_file f,sys_user u
+        <where>
+            c.file_id=f.id
+            and c.user_id=u.user_id
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
 
 </mapper>

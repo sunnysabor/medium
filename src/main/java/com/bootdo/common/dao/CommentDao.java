@@ -1,6 +1,7 @@
 package com.bootdo.common.dao;
 
 import com.bootdo.common.domain.CommentDO;
+import com.bootdo.common.domain.CommentRelation;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface CommentDao {
     CommentDO get(Long id);
 
     List<CommentDO> list(Map<String, Object> map);
+
+    List<CommentRelation> listCommentRelation(Map<String, Object> map);
 
     int count(Map<String, Object> map);
 

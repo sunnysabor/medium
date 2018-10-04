@@ -2,6 +2,7 @@ package com.bootdo.common.service.impl;
 
 import com.bootdo.common.dao.CommentDao;
 import com.bootdo.common.domain.CommentDO;
+import com.bootdo.common.domain.CommentRelation;
 import com.bootdo.common.domain.ConsultDO;
 import com.bootdo.common.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -23,6 +25,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<CommentDO> list(Map<String, Object> map) {
         return commentDao.list(map);
+    }
+
+    @Override
+    public List<CommentRelation> listCommentRelation(Map<String, Object> map) {
+        return commentDao.listCommentRelation(map);
     }
 
     @Override

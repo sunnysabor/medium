@@ -11,6 +11,7 @@
 package com.bootdo.common.dao;
 
 import com.bootdo.common.domain.CollectionDO;
+import com.bootdo.common.domain.CollectionRelation;
 import com.bootdo.common.domain.FileDO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author jerry
@@ -30,6 +31,8 @@ public interface CollectionDao {
     CollectionDO get(Long id);
 
     List<CollectionDO> list(Map<String, Object> map);
+
+    List<CollectionRelation> listCollectionRelation(Map<String, Object> map);
 
     int count(Map<String, Object> map);
 

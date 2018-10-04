@@ -2,6 +2,7 @@ package com.bootdo.common.service.impl;
 
 import com.bootdo.common.dao.ConsultDao;
 import com.bootdo.common.domain.ConsultDO;
+import com.bootdo.common.domain.ConsultRelation;
 import com.bootdo.common.service.ConsultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,11 @@ public class ConsultServiceImpl implements ConsultService {
     @Override
     public List<ConsultDO> list(Map<String, Object> map) {
         return ConsultDao.list(map);
+    }
+
+    @Override
+    public List<ConsultRelation> listConsultRelation(Map<String, Object> map) {
+        return ConsultDao.listConsultRelation(map);
     }
 
     @Override

@@ -12,6 +12,7 @@ package com.bootdo.common.service.impl;
 
 import com.bootdo.common.dao.CollectionDao;
 import com.bootdo.common.domain.CollectionDO;
+import com.bootdo.common.domain.CollectionRelation;
 import com.bootdo.common.service.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈收藏表的具体实现〉
  *
  * @author jerry
@@ -41,6 +42,11 @@ public class CollectionServiceImpl implements CollectionService {
     @Override
     public List<CollectionDO> list(Map<String, Object> map) {
         return collectionMapper.list(map);
+    }
+
+    @Override
+    public List<CollectionRelation> listCollectionRelation(Map<String, Object> map) {
+        return collectionMapper.listCollectionRelation(map);
     }
 
     @Override
