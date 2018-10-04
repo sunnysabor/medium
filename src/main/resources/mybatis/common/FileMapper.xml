@@ -29,7 +29,7 @@
         </if>
     </select>
 
-    <select id="list" resultType="com.bootdo.common.domain.FileRelation">
+    <select id="listRelation" resultType="com.bootdo.common.domain.FileRelation">
         select f.*,u.name as user_name from sys_file f,sys_user u
         <where>
             f.user_id=u.user_id

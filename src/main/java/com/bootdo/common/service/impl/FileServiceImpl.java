@@ -3,6 +3,7 @@ package com.bootdo.common.service.impl;
 import com.bootdo.common.config.BootdoConfig;
 import com.bootdo.common.dao.FileDao;
 import com.bootdo.common.domain.FileDO;
+import com.bootdo.common.domain.FileRelation;
 import com.bootdo.common.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,11 @@ public class FileServiceImpl implements FileService {
     @Override
     public List<FileDO> list(Map<String, Object> map) {
         return sysFileMapper.list(map);
+    }
+
+    @Override
+    public List<FileRelation> listRelation(Map<String, Object> map) {
+        return sysFileMapper.listRelation(map);
     }
 
     @Override

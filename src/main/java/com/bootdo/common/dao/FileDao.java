@@ -1,6 +1,7 @@
 package com.bootdo.common.dao;
 
 import com.bootdo.common.domain.FileDO;
+import com.bootdo.common.domain.FileRelation;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public interface FileDao {
     FileDO get(Long id);
 
     List<FileDO> list(Map<String, Object> map);
+
+    List<FileRelation> listRelation(Map<String, Object> map);
 
     int count(Map<String, Object> map);
 

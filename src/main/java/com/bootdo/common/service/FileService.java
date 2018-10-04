@@ -1,6 +1,7 @@
 package com.bootdo.common.service;
 
 import com.bootdo.common.domain.FileDO;
+import com.bootdo.common.domain.FileRelation;
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ public interface FileService {
     FileDO get(Long id);
 
     List<FileDO> list(Map<String, Object> map);
+
+    List<FileRelation> listRelation(Map<String, Object> map);
 
     int count(Map<String, Object> map);
 
