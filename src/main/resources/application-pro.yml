@@ -4,11 +4,12 @@ logging:
   level:
     root: error
     com.bootdo: info
+    com.bootdo.common.dao: debug
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://45.40.195.183:3306/medium?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/medium?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
     initialSize: 1

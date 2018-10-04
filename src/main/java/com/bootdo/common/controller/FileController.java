@@ -149,8 +149,7 @@ public class FileController extends BaseController {
         if ("test".equals(getUsername())) {
             return R.error(1, "演示系统不允许修改,完整体验请部署程序");
         }
-        String fileName = file.getOriginalFilename();
-        fileName = FileUtil.renameToUUID(fileName);
+        String fileName = FileUtil.renameToUUID(file.getOriginalFilename());
         FileDO sysFile = new FileDO(FileType.fileType(fileName),
                 "/files/" +
                         fileName, new Date());
@@ -159,7 +158,7 @@ public class FileController extends BaseController {
         } catch (Exception e) {
             return R.error();
         }
-
+        sysFile.setStatus("toAudit");
         if (sysFileService.save(sysFile) > 0) {
             return R.ok().put("fileName", sysFile.getUrl());
         }

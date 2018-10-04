@@ -8,7 +8,7 @@ public class CommentRelation extends CommentDO {
 
     private String userName;
     private String fileUrl;
-    private String fileName;
+    private Integer fileType;
 
     public String getUserName() {
         return userName;
@@ -26,11 +26,11 @@ public class CommentRelation extends CommentDO {
         this.fileUrl = fileUrl;
     }
 
-    public String getFileName() {
-        return fileName;
+    public Integer getFileType() {
+        return fileType;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileType(Integer fileType) {
+        this.fileType = fileType;
     }
 }

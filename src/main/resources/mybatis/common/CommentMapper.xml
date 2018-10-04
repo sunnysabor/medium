@@ -84,7 +84,9 @@
 
 
     <select id="listCommentRelation" resultType="com.bootdo.common.domain.CommentRelation">
-        select c.*,f.url as file_url,u.name as user_name from sys_comment c, sys_file f,sys_user u
+        select c.*,f.url as file_url,f.type as file_type,u.name as user_name
+        from
+        sys_comment c, sys_file f,sys_user u
         <where>
             c.file_id=f.id
             and c.user_id=u.user_id
