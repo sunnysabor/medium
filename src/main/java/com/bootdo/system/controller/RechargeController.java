@@ -1,7 +1,6 @@
 package com.bootdo.system.controller;
 
 import com.bootdo.common.annotation.Log;
-import com.bootdo.common.config.Constant;
 import com.bootdo.common.controller.BaseController;
 import com.bootdo.common.utils.PageUtils;
 import com.bootdo.common.utils.Query;
@@ -76,5 +75,20 @@ public class RechargeController extends BaseController {
         return R.error();
     }
 
+    @GetMapping("/userlist")
+    String userlist() {
+        return "user/index/recharge";
+    }
 
+    @GetMapping("/minerecharge")
+    @ResponseBody
+    PageUtils minerecharge(@RequestParam Map<String, Object> params) {
+        // 查询列表数据
+        params.put("userId",getUser().getUserId());
+        Query query = new Query(params);
+        List<RechargeDO> rechargeDOList = rechargeService.list(query);
+        int total = rechargeService.count(query);
+        PageUtils pageUtil = new PageUtils(rechargeDOList, total);
+        return pageUtil;
+    }
 }

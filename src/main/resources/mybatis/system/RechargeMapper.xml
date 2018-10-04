@@ -16,8 +16,7 @@
         `gmt_create`
         from sys_recharge
         <where>
-            <if test="userId != null and userId != ''">and id = #{id}</if>
-            <if test="username != null and username != ''">and user_id = #{user_id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -35,8 +34,7 @@
     <select id="count" resultType="int">
         select count(*) from sys_recharge
         <where>
-            <if test="userId != null and userId != ''">and id = #{id}</if>
-            <if test="username != null and username != ''">and user_id = #{user_id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
         </where>
     </select>
 

@@ -52,7 +52,7 @@
     function bindList(offset) {
         $
             .ajax({
-                url: '/common/sysFile/list?status=Audited&limit=10&offset=' +
+                url: '/common/sysFile/minefile?limit=10&offset=' +
                 offset,
                 method: 'get',
                 dataType: 'json',
@@ -68,21 +68,11 @@
                         htmlText += rows[i].url;
                         htmlText += '</h2>';
                         htmlText += '</a>';
-                        htmlText += '<h2>类型：';
-                        if(rows[i].type===0){
-                            htmlText += '图片';
-                        }else if(rows[i].type==1){
-                            htmlText += '文档';
-                        }else if(rows[i].type==2){
-                            htmlText += '视频';
-                        }else if(rows[i].type==3){
-                            htmlText += '音乐';
-                        }
-                        htmlText += '</h2>';
                         htmlText += '<p class="post-meta">作者：<a href="#">'
                             + rows[i].userName
                             + '</a> &nbsp;&nbsp; '
-                            + rows[i].createDate + '</p>';
+                            + rows[i].createDate +
+                            ' &nbsp;&nbsp; <button onclick="remove('+rows[i].id+')">删除</button>'+'</p>';
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }

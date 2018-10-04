@@ -2,6 +2,7 @@ package com.bootdo.common.controller;
 
 import com.bootdo.common.config.BootdoConfig;
 import com.bootdo.common.domain.FileDO;
+import com.bootdo.common.domain.FileDO;
 import com.bootdo.common.domain.FileRelation;
 import com.bootdo.common.service.FileService;
 import com.bootdo.common.utils.*;
@@ -46,7 +47,7 @@ public class FileController extends BaseController {
     public PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
         Query query = new Query(params);
-        List<FileDO> sysFileList = sysFileService.list(query);
+        List<FileRelation> sysFileList = sysFileService.listRelation(query);
         int total = sysFileService.count(query);
         PageUtils pageUtils = new PageUtils(sysFileList, total);
         return pageUtils;
@@ -158,5 +159,21 @@ public class FileController extends BaseController {
         return R.error();
     }
 
+    @GetMapping("/userlist")
+    String userlist() {
+        return "user/index/file";
+    }
+
+    @GetMapping("/minefile")
+    @ResponseBody
+    PageUtils minefile(@RequestParam Map<String, Object> params) {
+        // 查询列表数据
+        params.put("userId",getUser().getUserId());
+        Query query = new Query(params);
+        List<FileRelation> fileRelationList = sysFileService.listRelation(query);
+        int total = sysFileService.count(query);
+        PageUtils pageUtil = new PageUtils(fileRelationList, total);
+        return pageUtil;
+    }
 
 }

@@ -24,7 +24,6 @@ public class ConsultController extends BaseController {
     @Autowired
     private ConsultService consultService;
 
-
     @GetMapping()
     String consult(Model model) {
         Map<String, Object> params = new HashMap<>(16);
@@ -36,8 +35,8 @@ public class ConsultController extends BaseController {
     public PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
         Query query = new Query(params);
-        //List<ConsultDO> consultList = consultService.list(query);
-        List<ConsultRelation> consultList = consultService.listConsultRelation(query);
+        List<ConsultRelation> consultList = consultService
+                .listConsultRelation(query);
         int total = consultService.count(query);
         PageUtils pageUtils = new PageUtils(consultList, total);
         return pageUtils;
@@ -121,9 +120,6 @@ public class ConsultController extends BaseController {
     @PostMapping("/remove")
     @ResponseBody
     public R remove(Long id, HttpServletRequest request) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         if (consultService.remove(id) > 0) {
             return R.ok();
         }
@@ -136,10 +132,24 @@ public class ConsultController extends BaseController {
     @PostMapping("/batchRemove")
     @ResponseBody
     public R remove(@RequestParam("ids[]") Long[] ids) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         consultService.batchRemove(ids);
         return R.ok();
+    }
+
+    @GetMapping("/userlist")
+    String userlist() {
+        return "user/index/consult";
+    }
+
+    @GetMapping("/mineconsult")
+    @ResponseBody
+    PageUtils mineconsult(@RequestParam Map<String, Object> params) {
+        // 查询列表数据
+        params.put("userId",getUser().getUserId());
+        Query query = new Query(params);
+        List<ConsultRelation> consultDOList = consultService.listConsultRelation(query);
+        int total = consultService.count(query);
+        PageUtils pageUtil = new PageUtils(consultDOList, total);
+        return pageUtil;
     }
 }

@@ -11,7 +11,6 @@
 package com.bootdo.common.controller;
 
 import com.bootdo.common.annotation.Log;
-import com.bootdo.common.config.Constant;
 import com.bootdo.common.domain.CollectionDO;
 import com.bootdo.common.domain.CollectionRelation;
 import com.bootdo.common.service.CollectionService;
@@ -52,7 +51,6 @@ public class CollectionController extends BaseController {
         // 查询列表数据
         Query query = new Query(params);
         List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
-        //  List<CollectionDO> collectionDOList = collectionService.list(query);
         int total = collectionService.count(query);
         PageUtils pageUtil = new PageUtils(collectionDOList, total);
         return pageUtil;
@@ -93,5 +91,22 @@ public class CollectionController extends BaseController {
             return R.ok();
         }
         return R.error();
+    }
+
+    @GetMapping("/userlist")
+    String userlist() {
+        return "user/index/collection";
+    }
+
+    @GetMapping("/minecollection")
+    @ResponseBody
+    PageUtils minecollection(@RequestParam Map<String, Object> params) {
+        // 查询列表数据
+        params.put("userId",getUser().getUserId());
+        Query query = new Query(params);
+        List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
+        int total = collectionService.count(query);
+        PageUtils pageUtil = new PageUtils(collectionDOList, total);
+        return pageUtil;
     }
 }

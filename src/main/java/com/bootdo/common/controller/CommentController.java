@@ -35,7 +35,6 @@ public class CommentController extends BaseController {
     public PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
         Query query = new Query(params);
-        //  List<CommentDO> commentList = commentService.list(query);
         List<CommentRelation> commentList = commentService.listCommentRelation(query);
         int total = commentService.count(query);
         PageUtils pageUtils = new PageUtils(commentList, total);
@@ -103,5 +102,22 @@ public class CommentController extends BaseController {
     public R remove(@RequestParam("ids[]") Long[] ids) {
         commentService.batchRemove(ids);
         return R.ok();
+    }
+
+    @GetMapping("/userlist")
+    String userlist() {
+        return "user/index/comment";
+    }
+
+    @GetMapping("/minecomment")
+    @ResponseBody
+    PageUtils minecomment(@RequestParam Map<String, Object> params) {
+        // 查询列表数据
+        params.put("userId",getUser().getUserId());
+        Query query = new Query(params);
+        List<CommentRelation> commentDOList = commentService.listCommentRelation(query);
+        int total = commentService.count(query);
+        PageUtils pageUtil = new PageUtils(commentDOList, total);
+        return pageUtil;
     }
 }

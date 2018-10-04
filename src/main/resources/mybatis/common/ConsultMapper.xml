@@ -90,7 +90,8 @@
         <where>
             and c.user_id=u.user_id
             <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="userId != null and userId != ''">and c.user_id =
+                #{userId}</if>
             <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
         </where>
         <choose>
