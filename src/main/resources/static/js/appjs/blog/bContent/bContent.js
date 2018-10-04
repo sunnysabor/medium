@@ -1,4 +1,4 @@
-var prefix = "/blog/bContent"
+var prefix = "/user/bContent"
 $(function () {
     load();
 });
@@ -236,8 +236,8 @@ function remove(id) {
 }
 
 function preview(id) {
-    window.open("/blog/open/post/" + id);
-    //window.location.href="/blog/open/post/"+id;
+    window.open("/user/open/post/" + id);
+    //window.location.href="/user/open/post/"+id;
 }
 
 function batchRemove() {

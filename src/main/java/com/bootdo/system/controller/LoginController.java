@@ -46,17 +46,26 @@ public class LoginController extends BaseController {
         model.addAttribute("menus", menus);
         model.addAttribute("name", getUser().getName());
         FileDO fileDO = fileService.get(getUser().getPicId());
-        if (fileDO != null && fileDO.getUrl() != null) {
-            if (fileService.isExist(fileDO.getUrl())) {
-                model.addAttribute("picUrl", fileDO.getUrl());
+        if ("admin".equals(getUser().getIdentity())) {
+            //返回后台
+            if (fileDO != null && fileDO.getUrl() != null) {
+                if (fileService.isExist(fileDO.getUrl())) {
+                    model.addAttribute("picUrl", fileDO.getUrl());
+                } else {
+                    model.addAttribute("picUrl", "/img/photo_s.jpg");
+                }
             } else {
                 model.addAttribute("picUrl", "/img/photo_s.jpg");
             }
+            model.addAttribute("username", getUser().getUsername());
+            return "index_v1";
+        } else if ("user".equals(getUser().getIdentity())) {//返回前台
+            model.addAttribute("username", getUser().getUsername());
+            return "user/login";
         } else {
-            model.addAttribute("picUrl", "/img/photo_s.jpg");
+            //do nothing
+            return null;
         }
-        model.addAttribute("username", getUser().getUsername());
-        return "index_v1";
     }
 
     @GetMapping("/login")
@@ -68,7 +77,6 @@ public class LoginController extends BaseController {
     @PostMapping("/login")
     @ResponseBody
     R ajaxLogin(String username, String password) {
-
         password = MD5Utils.encrypt(username, password);
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
@@ -91,4 +99,8 @@ public class LoginController extends BaseController {
         return "main";
     }
 
+    public static void main(String[] args) {
+        String pwd = MD5Utils.encrypt("test", "test");
+        System.out.println(pwd);
+    }
 }
