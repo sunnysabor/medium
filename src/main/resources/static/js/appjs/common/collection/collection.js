@@ -58,6 +58,29 @@ function load() {
                         title: '多媒体id'
                     },
                     {
+                        field: 'fileType',
+                        title: '多媒体类型',
+                        formatter: function (value, row, index) {
+                            if (value === 0) {
+                                return '图片';
+                            } else if (value === 1) {
+                                return '文档';
+                            } else if (value === 2) {
+                                return '视频';
+                            } else if (value === 3) {
+                                return '音乐';
+                            }
+                            return '其他';
+                        }
+                    },
+                    {
+                        field: 'fileUrl',
+                        title: '多媒体Url',
+                        formatter: function (value, row, index) {
+                            return value.substring(7);
+                        }
+                    },
+                    {
                         field: 'createTime',
                         title: '创建时间'
                     },

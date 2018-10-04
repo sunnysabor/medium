@@ -52,6 +52,9 @@ function load() {
                     {
                         field: 'userId',
                         title: '用户id'
+                    }, {
+                        field: 'userName',
+                        title: '用户名'
                     },
                     {
                         field: 'content',

@@ -28,6 +28,14 @@
         .fileshow {
             display: block;
         }
+        .button{
+            display: none;
+            margin: auto;
+        }
+        .buttonShow{
+            display: block;
+        }
+        
     </style>
 </head>
 <body class="gray-bg">
@@ -95,15 +103,17 @@
                                 </div>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs"
-                                    @click="audit(row.id,'Audited')">审核通过
+                                    class="btn btn-warning btn-xs button"
+                                    @click="audit(row.id,'Audited')"
+                                    :class="{'buttonShow':row.status === 'toAudit'}">审核通过
                             </button>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs"
-                                    @click="audit(row.id,'Rejected')">审核拒绝
+                                    class="btn btn-warning btn-xs button"
+                                    @click="audit(row.id,'Rejected')"
+                                    :class="{'buttonShow':row.status === 'toAudit'}">审核拒绝
                             </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
-                                    class="btn btn-danger btn-xs"
+                                    class="btn btn-danger btn-xs button buttonShow"
                                     @click="remove(row.id)">删除
                             </button>
                             </a>
@@ -121,15 +131,17 @@
                                 </div>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs"
-                                    @click="audit(row.id,'Audited')">审核通过
+                                    class="btn btn-warning btn-xs button"
+                                    @click="audit(row.id,'Audited')"
+                                    :class="{'buttonShow':row.status === 'toAudit'}">审核通过
                             </button>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs"
-                                    @click="audit(row.id,'Rejected')">审核拒绝
+                                    class="btn btn-warning btn-xs button"
+                                    @click="audit(row.id,'Rejected')"
+                                    :class="{'buttonShow':row.status === 'toAudit'}">审核拒绝
                             </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
-                                    class="btn btn-danger btn-xs"
+                                    class="btn btn-danger btn-xs button buttonShow"
                                     @click="remove(row.id)">删除
                             </button>
                             </a>
@@ -148,15 +160,19 @@
                             </div>
                             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                             &nbsp;<button
-                                class="btn btn-warning btn-xs"
-                                @click="audit(row.id,'Audited')">审核通过
+                                class="btn btn-warning btn-xs button"
+                                @click="audit(row.id,'Audited')"
+                                :class="{'buttonShow':row.status ===
+                            'toAudit'}">审核通过
                         </button>
                             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                             &nbsp;<button
-                                class="btn btn-warning btn-xs"
-                                @click="audit(row.id,'Rejected')">审核拒绝
+                                class="btn btn-warning btn-xs button"
+                                @click="audit(row.id,'Rejected')"
+                            :class="{'buttonShow':row.status ===
+                            'toAudit'}">审核拒绝
                         </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
-                                class="btn btn-danger btn-xs"
+                                class="btn btn-danger btn-xs button buttonShow"
                                 @click="remove(row.id)">删除
                         </button>
                             </a>
@@ -176,15 +192,17 @@
                                 </div>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs"
-                                    @click="audit(row.id,'Audited')">审核通过
+                                    class="btn btn-warning btn-xs button"
+                                    @click="audit(row.id,'Audited')"
+                                    :class="{'buttonShow':row.status === 'toAudit'}">审核通过
                             </button>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs"
-                                    @click="audit(row.id,'Rejected')">审核拒绝
+                                    class="btn btn-warning btn-xs button"
+                                    @click="audit(row.id,'Rejected')"
+                                    :class="{'buttonShow':row.status === 'toAudit'}">审核拒绝
                             </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
-                                    class="btn btn-danger btn-xs"
+                                    class="btn btn-danger btn-xs button buttonShow"
                                     @click="remove(row.id)">删除
                             </button>
                             </a>
@@ -287,10 +305,13 @@
                 })
             },
             audit: function (id,status) {
-                var url="/common/sysFile/"+id+"/"+status;
                     $.ajax({
-                        url: url,
-                        type: "put",
+                        url: "/common/sysFile/updateStatus",
+                        type: "post",
+                        data: {
+                            'id': id,
+                            'status':status
+                        },
                         success: function (r) {
                             if (r.code == 0) {
                                 layer.msg(r.msg);

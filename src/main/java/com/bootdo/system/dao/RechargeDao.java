@@ -11,6 +11,7 @@
 package com.bootdo.system.dao;
 
 import com.bootdo.system.domain.RechargeDO;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import java.util.Map;
  * @create 2018/10/2
  * @since 1.0.0
  */
+@Mapper
 public interface RechargeDao {
     RechargeDO get(Long id);
 

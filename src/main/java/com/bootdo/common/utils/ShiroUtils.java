@@ -30,6 +30,7 @@ public class ShiroUtils {
 
     public static void logout() {
         getSubjct().logout();
+
     }
 
     public static List<Principal> getPrinciples() {

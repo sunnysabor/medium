@@ -103,8 +103,9 @@ public class FileController extends BaseController {
     /**
      * 修改多媒体状态（待审核 审核不通过 审核通过）
      */
-    @PutMapping("/{id}/{status}")
-    public R updateStatus(@PathVariable Long id, @PathVariable String status) {
+    @PostMapping("/updateStatus")
+    @ResponseBody
+    public R updateStatus( Long id, String status) {
         sysFileService.updateStatus(id, status);
         return R.ok();
     }
@@ -114,7 +115,7 @@ public class FileController extends BaseController {
      */
     @PostMapping("/remove")
     @ResponseBody
-    public R remove(Long id, HttpServletRequest request) {
+    public R remove(Long id) {
         String fileName = bootdoConfig.getUploadPath() + sysFileService.get(id).getUrl().replace("/files/", "");
         if (sysFileService.remove(id) > 0) {
             boolean b = FileUtil.deleteFile(fileName);
