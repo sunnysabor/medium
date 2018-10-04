@@ -25,6 +25,17 @@ public class FileDO implements Serializable {
     private String status;
     //用户ID
     private Long userId;
+    //征集ID
+    private String consultId;
+
+
+    public String getConsultId() {
+        return consultId;
+    }
+
+    public void setConsultId(String consultId) {
+        this.consultId = consultId;
+    }
 
     public Long getUserId() {
         return userId;

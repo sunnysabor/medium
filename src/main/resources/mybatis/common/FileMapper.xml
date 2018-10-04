@@ -14,6 +14,30 @@
             <if test="type != null and type != ''">and type = #{type}</if>
             <if test="url != null and url != ''">and url = #{url}</if>
             <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="consultId != null and consultId != ''">and consult_id = #{consultId}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="list" resultType="com.bootdo.common.domain.FileRelation">
+        select f.*,u.name as user_name from sys_file f,sys_user u
+        <where>
+            f.user_id=u.user_id
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="type != null and type != ''">and type = #{type}</if>
+            <if test="url != null and url != ''">and url = #{url}</if>
+            <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="consultId != null and consultId != ''">and consult_id = #{consultId}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -35,6 +59,7 @@
             <if test="type != null and type != ''">and type = #{type}</if>
             <if test="url != null and url != ''">and url = #{url}</if>
             <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
+            <if test="consultId != null and consultId != ''">and consult_id = #{consultId}</if>
         </where>
     </select>
 
@@ -45,7 +70,8 @@
 			`url`, 
 			`create_date`,
 			`status`,
-			`user_id`
+			`user_id`,
+			`consult_id`
 		)
 		values
 		(
@@ -53,7 +79,8 @@
 			#{url}, 
 			#{createDate},
 			#{status},
-			#{userId}
+			#{userId},
+			#{consultId}
 		)
 	</insert>
 
