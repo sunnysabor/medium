@@ -82,4 +82,19 @@
         </foreach>
     </delete>
 
+
+    <select id="getClass" resultMap="CommentResultMap">
+         select * from system_comment c, sys_file f,system_user u where c.file_id=t.id and c.user_id=u.id
+         and c.c.id=#{id}
+     </select>
+    <!-- 使用resultMap映射实体类和字段之间的一一对应关系 -->
+    <resultMap type="me.gacl.domain.Classes" id="ClassResultMap">
+        <id property="id" column="id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" javaType="me.gacl.domain.Teacher">
+            <id property="id" column="t_id"/>
+            <result property="name" column="t_name"/>
+        </association>
+    </resultMap>
+
 </mapper>
