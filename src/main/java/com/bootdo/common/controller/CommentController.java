@@ -24,7 +24,6 @@ public class CommentController extends BaseController {
     @Autowired
     private CommentService commentService;
 
-
     @GetMapping()
     String comment(Model model) {
         Map<String, Object> params = new HashMap<>(16);
@@ -55,7 +54,6 @@ public class CommentController extends BaseController {
         return "common/comment/edit";
     }
 
-
     /**
      * 保存
      */
@@ -73,7 +71,6 @@ public class CommentController extends BaseController {
         return R.error();
     }
 
-
     /**
      * 修改
      */
@@ -83,7 +80,6 @@ public class CommentController extends BaseController {
             return R.ok();
         }
         return R.error("修改失败");
-
     }
 
 
@@ -93,9 +89,6 @@ public class CommentController extends BaseController {
     @PostMapping("/remove")
     @ResponseBody
     public R remove(Long id, HttpServletRequest request) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         if (commentService.remove(id) > 0) {
             return R.ok();
         }
@@ -108,9 +101,6 @@ public class CommentController extends BaseController {
     @PostMapping("/batchRemove")
     @ResponseBody
     public R remove(@RequestParam("ids[]") Long[] ids) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         commentService.batchRemove(ids);
         return R.ok();
     }

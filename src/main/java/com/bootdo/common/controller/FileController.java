@@ -115,9 +115,6 @@ public class FileController extends BaseController {
     @PostMapping("/remove")
     @ResponseBody
     public R remove(Long id, HttpServletRequest request) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         String fileName = bootdoConfig.getUploadPath() + sysFileService.get(id).getUrl().replace("/files/", "");
         if (sysFileService.remove(id) > 0) {
             boolean b = FileUtil.deleteFile(fileName);
@@ -136,9 +133,6 @@ public class FileController extends BaseController {
     @PostMapping("/batchRemove")
     @ResponseBody
     public R remove(@RequestParam("ids[]") Long[] ids) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         sysFileService.batchRemove(ids);
         return R.ok();
     }
@@ -146,9 +140,6 @@ public class FileController extends BaseController {
     @ResponseBody
     @PostMapping("/upload")
     R upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        if ("test".equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         String fileName = FileUtil.renameToUUID(file.getOriginalFilename());
         FileDO sysFile = new FileDO(FileType.fileType(fileName),
                 "/files/" +

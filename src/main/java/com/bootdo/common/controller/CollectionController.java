@@ -68,9 +68,6 @@ public class CollectionController extends BaseController {
     @PostMapping("/save")
     @ResponseBody
     R save(CollectionDO collection) {
-        if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         if (collectionService.save(collection) > 0) {
             return R.ok();
         }
@@ -81,9 +78,6 @@ public class CollectionController extends BaseController {
     @PostMapping("/remove")
     @ResponseBody
     R remove(Long id) {
-        if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         if (collectionService.remove(id) > 0) {
             return R.ok();
         }
@@ -94,9 +88,6 @@ public class CollectionController extends BaseController {
     @PostMapping("/batchRemove")
     @ResponseBody
     R batchRemove(@RequestParam("ids[]") Long[] ids) {
-        if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }
         int r = collectionService.batchremove(ids);
         if (r > 0) {
             return R.ok();
