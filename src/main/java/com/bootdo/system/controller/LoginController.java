@@ -61,7 +61,7 @@ public class LoginController extends BaseController {
             return "index_v1";
         } else if ("user".equals(getUser().getIdentity())) {//返回前台
             model.addAttribute("username", getUser().getUsername());
-            return "user/login";
+            return "/user/index/main";
         } else {
             //do nothing
             return null;
@@ -99,8 +99,8 @@ public class LoginController extends BaseController {
         return "main";
     }
 
-    public static void main(String[] args) {
-        String pwd = MD5Utils.encrypt("test", "test");
-        System.out.println(pwd);
-    }
+//    public static void main(String[] args) {
+//        String pwd = MD5Utils.encrypt("test", "test");
+//        System.out.println(pwd);
+//    }
 }

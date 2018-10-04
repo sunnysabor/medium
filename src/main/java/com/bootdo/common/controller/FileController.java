@@ -2,6 +2,7 @@ package com.bootdo.common.controller;
 
 import com.bootdo.common.config.BootdoConfig;
 import com.bootdo.common.domain.FileDO;
+import com.bootdo.common.domain.FileRelation;
 import com.bootdo.common.service.FileService;
 import com.bootdo.common.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,13 +64,13 @@ public class FileController extends BaseController {
         return "common/sysFile/edit";
     }
 
-    /**
-     * 信息
-     */
-    @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Long id) {
-        FileDO sysFile = sysFileService.get(id);
-        return R.ok().put("sysFile", sysFile);
+    @GetMapping("/open/post/{id}")
+    String post(@PathVariable("id") Long id,Model model) {
+        FileDO sysFile = sysFileService.getRelation(id);
+        model.addAttribute("sysFile", sysFile);
+        model.addAttribute("createDate", DateUtils.format(sysFile.getCreateDate
+                ()));
+        return "user/index/post";
     }
 
     /**

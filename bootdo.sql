@@ -49,6 +49,7 @@ CREATE TABLE `sys_file` (
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
   `status` varchar(200) DEFAULT NULL COMMENT '状态',
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
+  `consult_id` bigint(20) DEFAULT NULL COMMENT '征集id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COMMENT='文件上传';
 

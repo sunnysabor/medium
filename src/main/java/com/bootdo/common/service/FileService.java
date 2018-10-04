@@ -17,6 +17,8 @@ public interface FileService {
 
     FileDO get(Long id);
 
+    FileRelation getRelation(Long id);
+
     List<FileDO> list(Map<String, Object> map);
 
     List<FileRelation> listRelation(Map<String, Object> map);

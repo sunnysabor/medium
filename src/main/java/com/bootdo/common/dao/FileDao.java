@@ -16,8 +16,9 @@ import java.util.Map;
  */
 @Mapper
 public interface FileDao {
-
     FileDO get(Long id);
+
+    FileRelation getRelation(Long id);
 
     List<FileDO> list(Map<String, Object> map);
 

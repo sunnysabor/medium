@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<head th:include="blog/index/include_blog::header"></head>
+<head th:include="user/index/include_file::header"></head>
+
+<style>
+	.file {
+		display: none;
+	}
+	.fileshow {
+		display: block;
+	}
+</style>
 <body>
-<nav th:include="blog/index/include_blog::nav" class="navbar navbar-default navbar-custom navbar-fixed-top"></nav>
-<!-- Page Header -->
-<header class="intro-header"
-        style="background-image: url('/img/blog/post-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1 th:text="${bContent.title}"></h1>
-                    <span class="meta">作者 <a href="#"
-                                             th:text="${bContent.author}"></a>&nbsp;&nbsp;<a href="#"
-                                                                                             th:text="${gtmModified}"></a>
+	<nav th:include="user/index/include_file::nav"
+		 class="navbar navbar-default navbar-custom navbar-fixed-top" ></nav>
+	<div id="app">
+		<!-- Page Header -->
+		<div class="intro-header"   style="background-image:url('/img/blog/post-bg.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+						<div class="post-heading">
+							<!--图片-->
+							<div class="file" :class="{'fileshow':sysFile.type === 0}">
+								<img alt="image" class="img-responsive"
+									 :src="sysFile.url">
+							</div>
+							<!--文档-->
+							<div  class="file" :class="{'fileshow':sysFile.type === 1}">
+								<a :href="sysFile.url">文档的下载预览</a></div>
+							<!--视频-->
+							<div class="file"
+								 :class="{'fileshow':sysFile.type === 2}">
+								<video :src="sysFile.url" controls="controls"  :class="{'fileshow':sysFile.type === 0}">
+								</video>
+							</div>
+							<!--音频-->
+							<div  class="file" :class="{'fileshow':sysFile.type === 3}">
+								<audio :src="sysFile.url" controls="controls">
+								</audio>
+							</div>
+							<span class="meta">类型 <a href="#"
+													 th:text="${sysFile.type}"></a>&nbsp;&nbsp;<a
+									href="#"
+									th:text="${createDate}"></a>
 						</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="col-sm-11">
-            <div id="content" class="summernote"></div>
-        </div>
+		<!-- Post Content -->
+		<article>
+			<div class="container">
+				<div class="col-sm-11">
+					<!--<div id="content" class="summernote"></div>-->
+				</div>
 
-    </div>
-</article>
-<hr>
-<div th:include="blog/index/include_blog::footer"></div>
-<script type="text/javascript" th:inline="javascript">
-    $().ready(function () {
-        $('.summernote').summernote({
-            lang: 'zh-CN'
-        });
-        var content = /*[[${bContent.content}]]*/
-            $('#content').code(content);
-        $('.summernote').destroy();
+			</div>
+		</article>
+
+	</div>
+
+	<hr>
+	<div th:include="user/index/include_file::footer"></div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            limit: 12,
+            offset: 0,
+            total: 0,
+            file: '',
+            type: '',
+            rows: '',
+        },
+        methods: {
+        },
     });
 </script>
 </body>

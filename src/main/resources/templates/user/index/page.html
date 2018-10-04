@@ -3,17 +3,17 @@
 <meta charset="utf-8">
 <body>
 
-<div id="content" class="summernote"></div>
+	<div id="content" class="summernote"></div>
 
-<script type="text/javascript" th:inline="javascript">
-    $().ready(function () {
-        $('.summernote').summernote({
-            lang: 'zh-CN'
-        });
-        var content = /*[[${bContent.content}]]*/
-            $('#content').code(content);
-        $('.summernote').destroy();
-    });
-</script>
+	<script type="text/javascript" th:inline="javascript">
+		$().ready(function() {
+			$('.summernote').summernote({
+				lang : 'zh-CN'
+			});
+			var content = /*[[${bContent.content}]]*/
+			$('#content').code(content);
+			$('.summernote').destroy();
+		});
+	</script>
 </body>
 </html>

@@ -7,6 +7,11 @@
 		select * from sys_file where id = #{value}
 	</select>
 
+    <select id="getRelation" resultType="com.bootdo.common.domain.FileRelation">
+        select f.*,u.name as user_name from sys_file f,sys_user u where
+        id=${value} and  f.user_id=u.user_id
+	</select>
+
     <select id="list" resultType="com.bootdo.common.domain.FileDO">
         select * from sys_file
         <where>

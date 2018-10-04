@@ -8,11 +8,9 @@ import com.bootdo.common.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -25,6 +23,11 @@ public class FileServiceImpl implements FileService {
     @Override
     public FileDO get(Long id) {
         return sysFileMapper.get(id);
+    }
+
+    @Override
+    public FileRelation getRelation(Long id) {
+        return sysFileMapper.getRelation(id);
     }
 
     @Override
