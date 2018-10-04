@@ -103,7 +103,7 @@ public class FileController extends BaseController {
     /**
      * 修改多媒体状态（待审核 审核不通过 审核通过）
      */
-    @GetMapping("/{id}/{status}")
+    @PutMapping("/{id}/{status}")
     public R updateStatus(@PathVariable Long id, @PathVariable String status) {
         sysFileService.updateStatus(id, status);
         return R.ok();

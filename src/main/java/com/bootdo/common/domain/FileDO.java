@@ -21,7 +21,7 @@ public class FileDO implements Serializable {
     private String url;
     // 创建时间
     private Date createDate;
-    //文件状态
+    //文件状态(toAudit,Audited，Rejected)
     private String status;
     //用户ID
     private Long userId;

@@ -95,8 +95,13 @@
                                 </div>
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
-                                    class="btn btn-warning btn-xs copy"
-                                    :url="row.url">审核
+                                    class="btn btn-warning btn-xs"
+                                    @click="audit(row.id,'Audited')">审核通过
+                            </button>
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                &nbsp;<button
+                                    class="btn btn-warning btn-xs"
+                                    @click="audit(row.id,'Rejected')">审核拒绝
                             </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
                                     class="btn btn-danger btn-xs"
                                     @click="remove(row.id)">删除
@@ -117,7 +122,12 @@
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
                                     class="btn btn-warning btn-xs"
-                                    :url="row.url">审核
+                                    @click="audit(row.id,'Audited')">审核通过
+                            </button>
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                &nbsp;<button
+                                    class="btn btn-warning btn-xs"
+                                    @click="audit(row.id,'Rejected')">审核拒绝
                             </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
                                     class="btn btn-danger btn-xs"
                                     @click="remove(row.id)">删除
@@ -139,7 +149,12 @@
                             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                             &nbsp;<button
                                 class="btn btn-warning btn-xs"
-                                :url="row.url">审核
+                                @click="audit(row.id,'Audited')">审核通过
+                        </button>
+                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                            &nbsp;<button
+                                class="btn btn-warning btn-xs"
+                                @click="audit(row.id,'Rejected')">审核拒绝
                         </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
                                 class="btn btn-danger btn-xs"
                                 @click="remove(row.id)">删除
@@ -162,7 +177,12 @@
                                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                                 &nbsp;<button
                                     class="btn btn-warning btn-xs"
-                                    :url="row.url">审核
+                                    @click="audit(row.id,'Audited')">审核通过
+                            </button>
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                                &nbsp;<button
+                                    class="btn btn-warning btn-xs"
+                                    @click="audit(row.id,'Rejected')">审核拒绝
                             </button>&nbsp; &nbsp; &nbsp; &nbsp;<button
                                     class="btn btn-danger btn-xs"
                                     @click="remove(row.id)">删除
@@ -265,6 +285,22 @@
                         }
                     });
                 })
+            },
+            audit: function (id,status) {
+                var url="/common/sysFile/"+id+"/"+status;
+                    $.ajax({
+                        url: url,
+                        type: "put",
+                        success: function (r) {
+                            if (r.code == 0) {
+                                layer.msg(r.msg);
+                                app.getData();
+                            } else {
+                                layer.msg(r.msg);
+                                app.getData();
+                            }
+                        }
+                    });
             },
             changeType: function (i) {
                 this.type = i;
