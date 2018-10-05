@@ -87,7 +87,7 @@
                             htmlText += '音乐';
                         }
                         htmlText += '</h2>';
-                        htmlText+='<a onclick="download('+rows[i].id+')" sylte="color:blue;">点我下载</a>';
+                        htmlText+='<button onclick="download('+rows[i].id+')" style="color:blue;">点我下载</button>';
                         htmlText += '<p class="post-meta">作者：<a href="#">'
                             + rows[i].userName
                             + '</a> &nbsp;&nbsp; '
@@ -107,25 +107,33 @@
     }
     
     function download(id) {
-        layer.confirm('确定要删除选中的记录？', {
-            btn: ['确定', '取消']
-        }, function () {
-            $.ajax({
-                url: "/common/sysFile/download",
-                type: "post",
-                data: {
-                    'id': id
-                },
-                success: function (r) {
-                    if (r.code == 0) {
-                        layer.msg(r.msg);
-                        bindList(0);
-                    } else {
-                        layer.msg(r.msg);
-                    }
+        $.ajax({
+            url: "/common/sysFile/download",
+            type: "post",
+            data: {
+                'id': id
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    download1(r.msg,r.msg.substring(7));
+                } else {
+                    layer.msg(r.msg);
                 }
-            });
-        })
+            }
+        });
+    }
+
+   function download1 (src, fileName) {
+        var $a = document.createElement('a');
+        $a.setAttribute('href', src);
+        $a.setAttribute('download', fileName);
+       var fileLink = document.createElement('span');
+        fileLink.setAttribute('style', 'cursor: pointer; -webkit-tap-highlight-color: transparent');
+        $a.appendChild(fileLink);
+       var body = document.getElementsByTagName('body')[0];
+        body.appendChild($a);
+        fileLink.click();
+        body.removeChild($a);
     }
 </script>
 </html>

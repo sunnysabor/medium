@@ -100,8 +100,8 @@ public class LoginController extends BaseController {
         return "main";
     }
 
-//    public static void main(String[] args) {
-//        String pwd = MD5Utils.encrypt("test", "test");
-//        System.out.println(pwd);
-//    }
+    public static void main(String[] args) {
+        String pwd = MD5Utils.encrypt("test", "test");
+        System.out.println(pwd);
+    }
 }

@@ -95,7 +95,8 @@
                                 <span class="corner"></span>
                                 <div class="image">
                                     <img alt="image" class="img-responsive"
-                                         :src="row.url">
+                                         :src="row.url"
+                                         style="width: 200px !important;height: 100px !important;">
                                 </div>
                                 <div class="file-name">
                                     <br/>
@@ -151,7 +152,7 @@
                             <!-- <a href="#">-->
                             <span class="corner"></span>
                             <div>
-                                <video :src="row.url" controls="controls">
+                                <video :src="row.url" controls="controls" style="width: 200px !important;height: 100px !important;">
                                 </video>
                             </div>
                             <div class="file-name">
@@ -183,7 +184,7 @@
                                 <span class="corner"></span>
                                 <div class="image"
                                      :class="{'aactive':row.type === 3}">
-                                    <audio :src="row.url" controls="controls">
+                                    <audio :src="row.url" controls="controls" style="width: 200px !important;height: 100px !important;">
                                     </audio>
                                 </div>
                                 <div class="file-name">
