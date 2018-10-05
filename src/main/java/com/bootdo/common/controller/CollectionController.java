@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -36,77 +37,81 @@ import java.util.Map;
 @RequestMapping("/common/collection")
 @Controller
 public class CollectionController extends BaseController {
-    @Autowired
-    CollectionService collectionService;
-    private String prefix = "common/collection";
+  @Autowired
+  CollectionService collectionService;
+  private String prefix = "common/collection";
 
-    @GetMapping("")
-    String collection(Model model) {
-        return prefix + "/collection";
-    }
+  @GetMapping("")
+  String collection(Model model) {
+    return prefix + "/collection";
+  }
 
-    @GetMapping("/list")
-    @ResponseBody
-    PageUtils list(@RequestParam Map<String, Object> params) {
-        // 查询列表数据
-        Query query = new Query(params);
-        List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
-        int total = collectionService.count(query);
-        PageUtils pageUtil = new PageUtils(collectionDOList, total);
-        return pageUtil;
-    }
+  @GetMapping("/list")
+  @ResponseBody
+  PageUtils list(@RequestParam Map<String, Object> params) {
+    // 查询列表数据
+    Query query = new Query(params);
+    List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
+    int total = collectionService.count(query);
+    PageUtils pageUtil = new PageUtils(collectionDOList, total);
+    return pageUtil;
+  }
 
-    @Log("添加收藏记录")
-    @GetMapping("/add")
-    String add(Model model) {
-        return prefix + "/add";
-    }
+  @Log("添加收藏记录")
+  @GetMapping("/add")
+  String add(Model model) {
+    return prefix + "/add";
+  }
 
-    @Log("保存收藏记录")
-    @PostMapping("/save")
-    @ResponseBody
-    R save(CollectionDO collection) {
-        if (collectionService.save(collection) > 0) {
-            return R.ok();
-        }
-        return R.error();
+  @Log("保存收藏记录")
+  @PostMapping("/save")
+  @ResponseBody
+  R save(Long fileId) {
+    CollectionDO collection = new CollectionDO();
+    collection.setFileId(fileId);
+    collection.setUserId(getUserId());
+    collection.setCreateTime(new Date());
+    if (collectionService.save(collection) > 0) {
+      return R.ok();
     }
+    return R.error();
+  }
 
-    @Log("删除收藏记录")
-    @PostMapping("/remove")
-    @ResponseBody
-    R remove(Long id) {
-        if (collectionService.remove(id) > 0) {
-            return R.ok();
-        }
-        return R.error();
+  @Log("删除收藏记录")
+  @PostMapping("/remove")
+  @ResponseBody
+  R remove(Long id) {
+    if (collectionService.remove(id) > 0) {
+      return R.ok();
     }
+    return R.error();
+  }
 
-    @Log("批量收藏记录")
-    @PostMapping("/batchRemove")
-    @ResponseBody
-    R batchRemove(@RequestParam("ids[]") Long[] ids) {
-        int r = collectionService.batchremove(ids);
-        if (r > 0) {
-            return R.ok();
-        }
-        return R.error();
+  @Log("批量收藏记录")
+  @PostMapping("/batchRemove")
+  @ResponseBody
+  R batchRemove(@RequestParam("ids[]") Long[] ids) {
+    int r = collectionService.batchremove(ids);
+    if (r > 0) {
+      return R.ok();
     }
+    return R.error();
+  }
 
-    @GetMapping("/userlist")
-    String userlist() {
-        return "user/index/collection";
-    }
+  @GetMapping("/userlist")
+  String userlist() {
+    return "user/index/collection";
+  }
 
-    @GetMapping("/minecollection")
-    @ResponseBody
-    PageUtils minecollection(@RequestParam Map<String, Object> params) {
-        // 查询列表数据
-        params.put("userId",getUser().getUserId());
-        Query query = new Query(params);
-        List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
-        int total = collectionService.count(query);
-        PageUtils pageUtil = new PageUtils(collectionDOList, total);
-        return pageUtil;
-    }
+  @GetMapping("/minecollection")
+  @ResponseBody
+  PageUtils minecollection(@RequestParam Map<String, Object> params) {
+    // 查询列表数据
+    params.put("userId", getUser().getUserId());
+    Query query = new Query(params);
+    List<CollectionRelation> collectionDOList = collectionService.listCollectionRelation(query);
+    int total = collectionService.count(query);
+    PageUtils pageUtil = new PageUtils(collectionDOList, total);
+    return pageUtil;
+  }
 }
