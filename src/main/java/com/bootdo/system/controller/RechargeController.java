@@ -39,6 +39,25 @@ public class RechargeController extends BaseController {
     return pageUtil;
   }
 
+  @GetMapping("/judge")
+  @ResponseBody
+  R list() {
+    // 查询列表数据
+    Map map = new HashMap();
+    map.put("userId", getUserId());
+    List<RechargeDO> rechargeDOList = rechargeService.list(map);
+    if (rechargeDOList == null || rechargeDOList.isEmpty()) {
+      return R.ok("非会员，请充值会员！");
+    }
+    List<RechargeDO> sortedList = rechargeDOList.stream()
+      .sorted(Comparator.comparing(RechargeDO::getEndTime).reversed()).collect(
+        Collectors.toList());
+    if (sortedList.get(0).getEndTime().before(new Date())) {
+      return R.ok("会员已过期（" + sortedList.get(0).getEndTime().toString() + ")");
+    }
+    return R.error();
+  }
+
   @Log("添加充值记录")
   @GetMapping("/add")
   String add(Model model) {
@@ -56,7 +75,6 @@ public class RechargeController extends BaseController {
     if (rechargeService.save(getRechargeDO(userId, number, list)) > 0) {
       return R.ok();
     }
-
     return R.error();
   }
 
@@ -89,13 +107,13 @@ public class RechargeController extends BaseController {
   private String getType(Integer number) {
     String type = "";
     if (1 == number) {
-      type = "one";
+      type = "一";
     } else if (3 == number) {
-      type = "three";
+      type = "三";
     } else if (6 == number) {
-      type = "six";
+      type = "六";
     } else {
-      type = "twelve";
+      type = "十二";
     }
     return type;
   }
@@ -144,4 +162,5 @@ public class RechargeController extends BaseController {
     PageUtils pageUtil = new PageUtils(rechargeDOList, total);
     return pageUtil;
   }
+
 }
