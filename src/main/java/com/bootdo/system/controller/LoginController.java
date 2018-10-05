@@ -59,7 +59,8 @@ public class LoginController extends BaseController {
             }
             model.addAttribute("username", getUser().getUsername());
             return "index_v1";
-        } else if ("user".equals(getUser().getIdentity())) {//返回前台
+        } else if ("user".equals(getUser().getIdentity())) {
+            //返回前台
             model.addAttribute("username", getUser().getUsername());
             return "/user/index/main";
         } else {

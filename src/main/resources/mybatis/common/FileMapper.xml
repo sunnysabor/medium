@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bootdo.common.dao.FileDao">
 
@@ -68,7 +69,8 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.bootdo.common.domain.FileDO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.bootdo.common.domain.FileDO" useGeneratedKeys="true"
+            keyProperty="id">
 		insert into sys_file
 		(
 			`type`, 
@@ -76,7 +78,8 @@
 			`create_date`,
 			`status`,
 			`user_id`,
-			`consult_id`
+			`consult_id`,
+			`file_type`
 		)
 		values
 		(
@@ -85,7 +88,8 @@
 			#{createDate},
 			#{status},
 			#{userId},
-			#{consultId}
+			#{consultId},
+			#{fileType}
 		)
 	</insert>
 
