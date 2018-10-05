@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,9 +42,10 @@ public class CommentController extends BaseController {
         return pageUtils;
     }
 
-    @GetMapping("/add")
-    String add() {
-        return "common/comment/add";
+    @GetMapping("/add/{fileId}")
+    String add(Model model,String fileId) {
+        model.addAttribute("fileId", fileId);
+        return "user/index/add_comment";
     }
 
     @GetMapping("/edit")
@@ -58,12 +60,12 @@ public class CommentController extends BaseController {
      */
     @ResponseBody
     @PostMapping("/save")
-    public R save(CommentDO comment) throws Exception {
-        if (StringUtils.isEmpty(comment.getUserId())) {
-            if (StringUtils.isEmpty(getUserId()))
-                throw new Exception("获取用户ID为空");
-            comment.setUserId(getUserId());
-        }
+    public R save(String content,Long fileId) throws Exception {
+        CommentDO comment=new CommentDO();
+        comment.setUserId(getUserId());
+        comment.setContent(content);
+        comment.setCreateTime(new Date());
+        comment.setFileId(fileId);
         if (commentService.save(comment) > 0) {
             return R.ok();
         }
