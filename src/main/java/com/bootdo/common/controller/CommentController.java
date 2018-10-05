@@ -43,7 +43,7 @@ public class CommentController extends BaseController {
     }
 
     @GetMapping("/add/{fileId}")
-    String add(Model model,String fileId) {
+    String add(Model model, @PathVariable("fileId") String fileId) {
         model.addAttribute("fileId", fileId);
         return "user/index/add_comment";
     }

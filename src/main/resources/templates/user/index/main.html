@@ -60,7 +60,7 @@
                     total = data.total;
                     var htmlText = "";
                     for (i = 0; i < rows.length; i++) {
-                        htmlText += '<div class="post-preview">';
+                        htmlText += '<div class="post-preview"><div>';
                         if (rows[i].fileRelation.type == 0) {
                             htmlText +=
                                 '<img  style="width: 400px;height: 400px;" src="' +
@@ -76,15 +76,16 @@
                                 '<audio  controls="controls" src="' +
                                 rows[i].fileRelation.url + '"></audio>';
                         }
-                        htmlText += '<button onclick="view(' +
-                            rows[i].fileRelation.id + ')" style="color:blue;">查看详情</button>&nbsp;&nbsp;';
-                        htmlText += '<button onclick="download(' +
-                            rows[i].fileRelation.id + ')" style="color:blue;">点我下载</button>&nbsp;&nbsp;';
-                        htmlText += '<button onclick="collection(' +
-                            rows[i].fileRelation.id + ')" style="color:blue;">点我收藏</button>&nbsp;&nbsp;';
-                        htmlText += '<button onclick="comment(' +
+                        htmlText +=
+                            '</div><button class="btn-primary" onclick="view(' +
+                            rows[i].fileRelation.id + ')">查看详情</button>&nbsp;&nbsp;';
+                        htmlText += '<button class="btn-primary" onclick="download(' +
+                            rows[i].fileRelation.id + ')">点我下载</button>&nbsp;&nbsp;';
+                        htmlText +=  '<button class="btn-primary" onclick="collection(' +
+                            rows[i].fileRelation.id + ')">点我收藏</button>&nbsp;&nbsp;';
+                        htmlText += '<button class="btn-primary" onclick="comment(' +
                             rows[i].fileRelation.id +
-                            ')" style="color:blue;">我要评论</button>&nbsp;&nbsp;';
+                            ')">我要评论</button>&nbsp;&nbsp;';
                         htmlText += '<p class="post-meta">作者：<a href="#">'
                             + rows[i].fileRelation.userName
                             + '</a> &nbsp;&nbsp; '
@@ -92,7 +93,9 @@
                         //封装评论内容
                         htmlText += '<div style="border: 1px solid red;margin-left: 30px;">';
                         for (j = 0; j < rows[i].commentDOList.length; j++) {
-                            htmlText += rows[i].commentDOList[j];
+                            htmlText=htmlText+ '<div class="user_name">'+rows[i].commentDOList[j].userName+'</div>';
+                            htmlText=htmlText+ '<div class="content">'+rows[i].commentDOList[j].content+'</div>';
+                            htmlText=htmlText+ '<div class="create_time">'+rows[i].commentDOList[j].createTime+'</div>';
                         }
                         htmlText += '</div>';
                         htmlText += '</div>';
@@ -161,7 +164,7 @@
         });
     }
     
-    function comment(id) {
+    function comment(fileId) {
         // iframe层
         layer.open({
             type: 2,
@@ -169,7 +172,7 @@
             maxmin: true,
             shadeClose: false, // 点击遮罩关闭层
             area: ['800px', '520px'],
-            content: '/common/comment/add'+id
+            content: '/common/comment/add/'+fileId
         });
     }
 
