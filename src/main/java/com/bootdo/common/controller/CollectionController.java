@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,9 +68,18 @@ public class CollectionController extends BaseController {
   @PostMapping("/save")
   @ResponseBody
   R save(Long fileId) {
+    Map query = new HashMap();
+    Long userId = getUserId();
+    query.put("fileId", fileId);
+    List<CollectionDO> list = collectionService.list(query);
+    for (CollectionDO collection : list) {
+      if (userId.equals(collection.getUserId())) {
+        return R.ok("已收藏");
+      }
+    }
     CollectionDO collection = new CollectionDO();
     collection.setFileId(fileId);
-    collection.setUserId(getUserId());
+    collection.setUserId(userId);
     collection.setCreateTime(new Date());
     if (collectionService.save(collection) > 0) {
       return R.ok();
