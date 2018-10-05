@@ -78,7 +78,7 @@ function load() {
                         align: 'center',
                         formatter: function (value, row, index) {
                             var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
-                                + row.userId
+                                + row.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
                             return d;
                         }
