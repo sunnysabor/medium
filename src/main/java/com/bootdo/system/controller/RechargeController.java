@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -52,10 +53,13 @@ public class RechargeController extends BaseController {
     List<RechargeDO> sortedList = rechargeDOList.stream()
       .sorted(Comparator.comparing(RechargeDO::getEndTime).reversed()).collect(
         Collectors.toList());
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+    String result = simpleDateFormat.format(sortedList.get(0).getEndTime());
     if (sortedList.get(0).getEndTime().before(new Date())) {
-      return R.ok("会员已过期（" + sortedList.get(0).getEndTime().toString() + ")");
+      return R.ok("会员已过期（" + result + ")");
     }
-    return R.ok("当前会员到期时间" + sortedList.get(0).getEndTime().toString());
+
+    return R.ok("当前会员到期时间" + result);
   }
 
   @Log("添加充值记录")
