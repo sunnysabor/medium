@@ -61,36 +61,35 @@
                     var htmlText = "";
                     for (i = 0; i < rows.length; i++) {
                         htmlText += '<div class="post-preview">';
-                        if(rows[i].type==0){
+                        if (rows[i].type == 0) {
                             htmlText +=
                                 '<img  style="width: 400px;height: 400px;" src="' +
                                 rows[i].url + '">';
-                        }else if(rows[i].type==1){
-                            htmlText += '<a href="' +
-                                rows[i].url + '"></a>';
-                        }else if(rows[i].type==2){
+                        } else if (rows[i].type == 1) {
+                            htmlText += '<a>文档素材</a>';
+                        } else if (rows[i].type == 2) {
                             htmlText +=
                                 '<video style="width: 400px;height: 400px;" controls="controls" src="' +
                                 rows[i].url + '"></video>';
-                        }else if(rows[i].type==3){
+                        } else if (rows[i].type == 3) {
                             htmlText +=
                                 '<audio  controls="controls" src="' +
                                 rows[i].url + '"></audio>';
                         }
                         htmlText += '<h2>类型：';
-                        if(rows[i].type===0){
+                        if (rows[i].type === 0) {
                             htmlText += '图片';
-                        }else if(rows[i].type==1){
+                        } else if (rows[i].type == 1) {
                             htmlText += '文档';
-                        }else if(rows[i].type==2){
+                        } else if (rows[i].type == 2) {
                             htmlText += '视频';
-                        }else if(rows[i].type==3){
+                        } else if (rows[i].type == 3) {
                             htmlText += '音乐';
                         }
                         htmlText += '</h2>';
-                        htmlText+='<button onclick="view('+rows[i].id+')" style="color:blue;">查看详情</button>&nbsp;&nbsp;';
-                        htmlText+='<button onclick="download('+rows[i].id+')" style="color:blue;">点我下载</button>&nbsp;&nbsp;';
-                        htmlText+='<button onclick="collection('+rows[i].id+')" style="color:blue;">点我收藏</button>&nbsp;&nbsp;';
+                        htmlText += '<button onclick="view(' + rows[i].id + ')" style="color:blue;">查看详情</button>&nbsp;&nbsp;';
+                        htmlText += '<button onclick="download(' + rows[i].id + ')" style="color:blue;">点我下载</button>&nbsp;&nbsp;';
+                        htmlText += '<button onclick="collection(' + rows[i].id + ')" style="color:blue;">点我收藏</button>&nbsp;&nbsp;';
                         htmlText += '<p class="post-meta">作者：<a href="#">'
                             + rows[i].userName
                             + '</a> &nbsp;&nbsp; '
@@ -108,7 +107,7 @@
                 }
             });
     }
-    
+
     function download(id) {
         $.ajax({
             url: "/common/sysFile/download",
@@ -118,7 +117,24 @@
             },
             success: function (r) {
                 if (r.code == 0) {
-                    download1(r.msg,r.msg.substring(7));
+                    download1(r.msg, r.msg.substring(7));
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    }
+
+    function view(view) {
+        $.ajax({
+            url: "/common/sysFile/info",
+            type: "post",
+            data: {
+                'id': id
+            },
+            success: function (r) {
+                if (r.code == 0) {
+
                 } else {
                     layer.msg(r.msg);
                 }
@@ -144,14 +160,14 @@
         });
     }
 
-   function download1 (src, fileName) {
+    function download1(src, fileName) {
         var $a = document.createElement('a');
         $a.setAttribute('href', src);
         $a.setAttribute('download', fileName);
-       var fileLink = document.createElement('span');
+        var fileLink = document.createElement('span');
         fileLink.setAttribute('style', 'cursor: pointer; -webkit-tap-highlight-color: transparent');
         $a.appendChild(fileLink);
-       var body = document.getElementsByTagName('body')[0];
+        var body = document.getElementsByTagName('body')[0];
         body.appendChild($a);
         fileLink.click();
         body.removeChild($a);

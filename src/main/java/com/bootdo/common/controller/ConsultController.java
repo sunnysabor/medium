@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class ConsultController extends BaseController {
 
     @GetMapping("/add")
     String add() {
-        return "common/consult/add";
+        return "user/index/add_consult";
     }
 
     @GetMapping("/edit")
@@ -74,18 +75,18 @@ public class ConsultController extends BaseController {
      */
     @ResponseBody
     @PostMapping("/save")
-    public R save(ConsultDO consult) throws Exception {
-        if (StringUtils.isEmpty(consult.getUserId())) {
-            if (StringUtils.isEmpty(getUserId()))
-                throw new Exception("获取用户ID为空");
-            consult.setUserId(getUserId());
-        }
+    public R save(String content) throws Exception {
+        ConsultDO consult = new ConsultDO();
+        consult.setGooded(0L);
+        consult.setReaded(0L);
+        consult.setUserId(getUserId());
+        consult.setContent(content);
+        consult.setCreateTime(new Date());
         if (consultService.save(consult) > 0) {
             return R.ok();
         }
         return R.error();
     }
-
 
     /**
      * 修改
@@ -145,11 +146,18 @@ public class ConsultController extends BaseController {
     @ResponseBody
     PageUtils mineconsult(@RequestParam Map<String, Object> params) {
         // 查询列表数据
-        params.put("userId",getUser().getUserId());
+        params.put("userId", getUser().getUserId());
         Query query = new Query(params);
         List<ConsultRelation> consultDOList = consultService.listConsultRelation(query);
         int total = consultService.count(query);
         PageUtils pageUtil = new PageUtils(consultDOList, total);
         return pageUtil;
     }
+
+    @GetMapping("/me")
+    String me() {
+        return "user/index/meconsult";
+    }
+
+
 }

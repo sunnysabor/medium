@@ -2,6 +2,11 @@
 <html>
 <meta charset="utf-8">
 <head th:include="user/index/include_file::header"></head>
+<style>
+    .layui-upload-file {
+        display: none !important;
+    }
+</style>
 <body>
 <nav th:include="user/index/include_file::nav"
      class="navbar navbar-default navbar-custom navbar-fixed-top"></nav>
@@ -21,7 +26,10 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 file-manager">
+            <button type="button" id="test1">
+                我要上传
+            </button>
             <div id="incomeNum"></div>
             <div class="clearfix">
                 <p id="flagLoaded" style="display: none; text-align: center;">
@@ -41,7 +49,6 @@
     var total;
     $(function () {
         bindList(0);
-
     });
 
     function nextPage() {
@@ -49,6 +56,7 @@
     }
 
     function bindList(offset) {
+        $('#incomeNum').html("");
         $
             .ajax({
                 url: '/common/sysFile/minefile?limit=10&offset=' +
@@ -61,35 +69,42 @@
                     var htmlText = "";
                     for (var i = 0; i < rows.length; i++) {
                         htmlText += '<div class="post-preview">';
-                        if(rows[i].type==0){
+                        if (rows[i].type == 0) {
                             htmlText +=
                                 '<img  style="width: 400px;height: 400px;" src="' +
                                 rows[i].url + '">';
-                        }else if(rows[i].type==1){
-                            htmlText += '<a href="' +
-                                rows[i].url + '"></a>';
-                        }else if(rows[i].type==2){
+                        } else if (rows[i].type == 1) {
+                            htmlText += '<a>文档素材</a>';
+                        } else if (rows[i].type == 2) {
                             htmlText +=
                                 '<video style="width: 400px;height: 400px;" controls="controls" src="' +
                                 rows[i].url + '"></video>';
-                        }else if(rows[i].type==3){
+                        } else if (rows[i].type == 3) {
                             htmlText +=
                                 '<audio  controls="controls" src="' +
                                 rows[i].url + '"></audio>';
                         }
                         htmlText += '<h2>类型：';
-                        if(rows[i].type===0){
+                        if (rows[i].type === 0) {
                             htmlText += '图片';
-                        }else if(rows[i].type==1){
+                        } else if (rows[i].type == 1) {
                             htmlText += '文档';
-                        }else if(rows[i].type==2){
+                        } else if (rows[i].type == 2) {
                             htmlText += '视频';
-                        }else if(rows[i].type==3){
+                        } else if (rows[i].type == 3) {
                             htmlText += '音乐';
+                        }
+                        if (rows[i].fileType === 'member') {
+                            htmlText += '（会员可以下载）';
                         }
                         htmlText += '</h2>';
                         htmlText += '</a>';
-                        htmlText+='<button onclick="remove('+rows[i].id+')" style="color:blue;">删除</button>';
+                        htmlText += '<button onclick="remove(' + rows[i].id + ')" style="color:blue;">删除</button>';
+                        if (rows[i].fileType !== 'member') {
+                            htmlText += '<button onclick="convert(' +
+                                rows[i].id +
+                                ')" style="color:blue;">转为会员类型</button>';
+                        }
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }
@@ -103,5 +118,60 @@
                 }
             });
     }
+
+    function remove(id) {
+        $.ajax({
+            url: "/common/sysFile/remove",
+            type: "post",
+            data: {
+                'id': id
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    layer.msg(r.msg);
+                    bindList(0);
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    }
+
+    function convert(id) {
+        $.ajax({
+            url: "/common/sysFile/convert",
+            type: "post",
+            data: {
+                'id': id
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    layer.msg(r.msg);
+                    bindList(0);
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test1', //绑定元素
+            url: '/common/sysFile/upload', //上传接口
+            size: 1000,
+            accept: 'file',
+            done: function (r) {
+                layer.msg(r.msg);
+                bindList(0);
+            },
+            error: function (r) {
+                layer.msg(r.msg);
+            }
+        });
+    });
 </script>
 </html>
