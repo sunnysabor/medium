@@ -102,8 +102,9 @@ public class ConsultController extends BaseController {
     /**
      * 点赞
      */
-    @GetMapping("/good/{id}")
-    public R update(@PathVariable Long id) {
+    @PostMapping("/good")
+    @ResponseBody
+    public R good(Long id,HttpServletRequest request) {
         ConsultDO consultDO = consultService.get(id);
         if (consultDO != null) {
             consultDO.setGooded(consultDO.getGooded() + 1);
@@ -113,7 +114,6 @@ public class ConsultController extends BaseController {
         }
         return R.error();
     }
-
 
     /**
      * 删除

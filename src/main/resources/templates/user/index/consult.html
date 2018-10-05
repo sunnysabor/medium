@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <span class="subheading">多媒体素材管理系统</span>
+                    <span class="subheading">多媒体素材系统</span>
                 </div>
             </div>
         </div>
@@ -48,6 +48,24 @@
         bindList(currentPage * limit)
     }
 
+    function addGood(id){
+        $.ajax({
+            url: "/common/consult/good",
+            type: "post",
+            data: {
+                'id': id
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    layer.msg(r.msg);
+                    bindList(0);
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    }
+
     function bindList(offset) {
         $('#incomeNum').html("");
         $
@@ -62,17 +80,16 @@
                     var htmlText = "";
                     for (i = 0; i < rows.length; i++) {
                         htmlText += '<div class="post-preview">';
-                        htmlText += '<a href="/common/sysFile/open/post/' +
-                            rows[i].id + '">';
                         htmlText += '<h2 class="post-title">';
                         htmlText += rows[i].content;
                         htmlText += '</h2>';
                         htmlText += '</a>';
-                        htmlText += '<p class="post-meta">作者：<a href="#">'
+                        htmlText += '<p class="post-meta">征集人：'
                             + rows[i].userName
-                            + '</a> &nbsp;&nbsp; '
+                            + ' &nbsp;&nbsp; '
                             + rows[i].createTime +
                             ' &nbsp;&nbsp; 阅读量：<a style="color:red;">'+rows[i].readed+'</a>点赞数：<a style="color:red;">'+rows[i].gooded+'</a></p>';
+                        htmlText=htmlText+'<button class="btn-primary" onclick="addGood('+rows[i].id+')">点赞</button>';
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }

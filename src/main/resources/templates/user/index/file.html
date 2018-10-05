@@ -6,6 +6,28 @@
     .layui-upload-file {
         display: none !important;
     }
+     .user_name {
+         font-size: 16px;
+     }
+
+    .create_time {
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .content {
+        font-size: 16px;
+        margin-left: 50px;
+    }
+
+    .eachlist {
+        border-bottom: 1px dotted gray;
+    }
+
+    .post-preview{
+        border: 3px dotted #337ab7;
+        margin-bottom: 20px;
+    }
 </style>
 <body>
 <nav th:include="user/index/include_file::nav"
@@ -16,7 +38,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <span class="subheading">多媒体素材管理系统</span>
+                    <span class="subheading">多媒体素材系统</span>
                 </div>
             </div>
         </div>
@@ -27,7 +49,8 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 file-manager">
-            <button type="button" id="test1">
+            <button type="button" id="test1" class="btn-primary"
+                    style="margin-bottom: 15px;">
                 我要上传
             </button>
             <div id="incomeNum"></div>
@@ -68,45 +91,44 @@
                     total = data.total;
                     var htmlText = "";
                     for (var i = 0; i < rows.length; i++) {
-                        htmlText += '<div class="post-preview">';
-                        if (rows[i].type == 0) {
+                        htmlText += '<div class="post-preview"><div>';
+                        if (rows[i].fileRelation.type == 0) {
                             htmlText +=
                                 '<img  style="width: 400px;height: 400px;" src="' +
-                                rows[i].url + '">';
-                        } else if (rows[i].type == 1) {
+                                rows[i].fileRelation.url + '">';
+                        } else if (rows[i].fileRelation.type == 1) {
                             htmlText += '<a>文档素材</a>';
-                        } else if (rows[i].type == 2) {
+                        } else if (rows[i].fileRelation.type == 2) {
                             htmlText +=
                                 '<video style="width: 400px;height: 400px;" controls="controls" src="' +
-                                rows[i].url + '"></video>';
-                        } else if (rows[i].type == 3) {
+                                rows[i].fileRelation.url + '"></video>';
+                        } else if (rows[i].fileRelation.type == 3) {
                             htmlText +=
                                 '<audio  controls="controls" src="' +
-                                rows[i].url + '"></audio>';
+                                rows[i].fileRelation.url + '"></audio>';
                         }
-                        htmlText += '<h2>类型：';
-                        if (rows[i].type === 0) {
-                            htmlText += '图片';
-                        } else if (rows[i].type == 1) {
-                            htmlText += '文档';
-                        } else if (rows[i].type == 2) {
-                            htmlText += '视频';
-                        } else if (rows[i].type == 3) {
-                            htmlText += '音乐';
-                        }
-                        if (rows[i].fileType === 'member') {
+                        if (rows[i].fileRelation.fileType === 'member') {
                             htmlText += '（会员可以下载）';
                         }
-                        htmlText += '</h2>';
-                        htmlText += '</a>';
-                        htmlText += '<button onclick="remove(' + rows[i].id + ')" style="color:blue;">删除</button>';
-                        if (rows[i].fileType !== 'member') {
-                            htmlText += '<button onclick="convert(' +
-                                rows[i].id +
-                                ')" style="color:blue;">转为会员类型</button>';
+                        htmlText += '</div><button  class="btn-primary" onclick="remove(' +
+                            rows[i].id + ')">删除</button>&nbsp;&nbsp;';
+                        if (rows[i].fileRelation.fileType !== 'member') {
+                            htmlText +=
+                                '<button  class="btn-primary" onclick="convert(' +
+                                rows[i].fileRelation.id +
+                                ')" ">转为会员类型</button>';
+                        }
+                        //封装评论内容
+                        htmlText +=
+                            '<div style=" border: 2px solid gray;margin-left: 30px;">';
+                        for (j = 0; j < rows[i].commentDOList.length; j++) {
+                            htmlText = htmlText +
+                                '<div class="eachlist"><div class="user_name">' + rows[i].commentDOList[j].userName + '</div>';
+                            htmlText = htmlText + '<div class="content">' + rows[i].commentDOList[j].content + '</div>';
+                            htmlText = htmlText + '<div class="create_time">' + rows[i].commentDOList[j].createTime + '</div></div>';
                         }
                         htmlText += '</div>';
-                        htmlText += '<hr>';
+                        htmlText += '</div>';
                     }
                     $("#incomeNum").append(htmlText);
                     document.getElementById("flagLoad").style.display = "block";

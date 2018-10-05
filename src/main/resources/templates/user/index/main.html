@@ -11,12 +11,36 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <span class="subheading">多媒体素材管理系统</span>
+                    <span class="subheading">多媒体素材系统</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+<style>
+    .user_name {
+        font-size: 16px;
+    }
+
+    .create_time {
+        font-size: 14px;
+        text-align: right;
+    }
+
+    .content {
+        font-size: 16px;
+        margin-left: 50px;
+    }
+
+    .eachlist {
+        border-bottom: 1px dotted gray;
+    }
+
+    .post-preview{
+        border: 3px dotted #337ab7;
+        margin-bottom: 20px;
+    }
+</style>
 
 <!-- Main Content -->
 <div class="container">
@@ -76,12 +100,9 @@
                                 '<audio  controls="controls" src="' +
                                 rows[i].fileRelation.url + '"></audio>';
                         }
-                        htmlText +=
-                            '</div><button class="btn-primary" onclick="view(' +
-                            rows[i].fileRelation.id + ')">查看详情</button>&nbsp;&nbsp;';
-                        htmlText += '<button class="btn-primary" onclick="download(' +
+                        htmlText += '</div><button class="btn-primary" onclick="download(' +
                             rows[i].fileRelation.id + ')">点我下载</button>&nbsp;&nbsp;';
-                        htmlText +=  '<button class="btn-primary" onclick="collection(' +
+                        htmlText += '<button class="btn-primary" onclick="collection(' +
                             rows[i].fileRelation.id + ')">点我收藏</button>&nbsp;&nbsp;';
                         htmlText += '<button class="btn-primary" onclick="comment(' +
                             rows[i].fileRelation.id +
@@ -91,15 +112,16 @@
                             + '</a> &nbsp;&nbsp; '
                             + rows[i].fileRelation.createDate + '</p>';
                         //封装评论内容
-                        htmlText += '<div style="border: 1px solid red;margin-left: 30px;">';
+                        htmlText +=
+                            '<div style=" border: 2px solid gray;margin-left: 30px;">';
                         for (j = 0; j < rows[i].commentDOList.length; j++) {
-                            htmlText=htmlText+ '<div class="user_name">'+rows[i].commentDOList[j].userName+'</div>';
-                            htmlText=htmlText+ '<div class="content">'+rows[i].commentDOList[j].content+'</div>';
-                            htmlText=htmlText+ '<div class="create_time">'+rows[i].commentDOList[j].createTime+'</div>';
+                            htmlText = htmlText +
+                                '<div class="eachlist"><div class="user_name">' + rows[i].commentDOList[j].userName + '</div>';
+                            htmlText = htmlText + '<div class="content">' + rows[i].commentDOList[j].content + '</div>';
+                            htmlText = htmlText + '<div class="create_time">' + rows[i].commentDOList[j].createTime + '</div></div>';
                         }
                         htmlText += '</div>';
                         htmlText += '</div>';
-                        htmlText += '<hr>';
                     }
                     $("#incomeNum").append(htmlText);
                     document.getElementById("flagLoad").style.display = "block";
@@ -129,23 +151,6 @@
         });
     }
 
-    function view(view) {
-        $.ajax({
-            url: "/common/sysFile/info",
-            type: "post",
-            data: {
-                'id': id
-            },
-            success: function (r) {
-                if (r.code == 0) {
-
-                } else {
-                    layer.msg(r.msg);
-                }
-            }
-        });
-    }
-
     function collection(id) {
         $.ajax({
             url: "/common/collection/save",
@@ -163,16 +168,16 @@
             }
         });
     }
-    
+
     function comment(fileId) {
         // iframe层
         layer.open({
             type: 2,
-            title: '增加征集',
+            title: '增加评论',
             maxmin: true,
             shadeClose: false, // 点击遮罩关闭层
             area: ['800px', '520px'],
-            content: '/common/comment/add/'+fileId
+            content: '/common/comment/add/' + fileId
         });
     }
 
