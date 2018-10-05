@@ -55,7 +55,7 @@ public class RechargeController extends BaseController {
     if (sortedList.get(0).getEndTime().before(new Date())) {
       return R.ok("会员已过期（" + sortedList.get(0).getEndTime().toString() + ")");
     }
-    return R.error();
+    return R.ok("当前会员到期时间" + sortedList.get(0).getEndTime().toString());
   }
 
   @Log("添加充值记录")
