@@ -11,7 +11,6 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>BootDo Blog</h1>
                     <span class="subheading">多媒体素材管理系统</span>
                 </div>
             </div>
@@ -42,7 +41,6 @@
     var total;
     $(function () {
         bindList(0);
-
     });
 
     function nextPage() {
@@ -62,12 +60,22 @@
                     var htmlText = "";
                     for (i = 0; i < rows.length; i++) {
                         htmlText += '<div class="post-preview">';
-                        htmlText += '<a href="/common/sysFile/open/post/' +
-                            rows[i].id + '">';
-                        htmlText += '<h2 class="post-title">';
-                        htmlText += rows[i].url;
-                        htmlText += '</h2>';
-                        htmlText += '</a>';
+                        if(rows[i].type==0){
+                            htmlText +=
+                                '<img  style="width: 400px;height: 400px;" src="' +
+                                rows[i].url + '">';
+                        }else if(rows[i].type==1){
+                            htmlText += '<a href="' +
+                                rows[i].url + '"></a>';
+                        }else if(rows[i].type==2){
+                            htmlText +=
+                                '<video style="width: 400px;height: 400px;" controls="controls" src="' +
+                                rows[i].url + '"></video>';
+                        }else if(rows[i].type==3){
+                            htmlText +=
+                                '<audio  controls="controls" src="' +
+                                rows[i].url + '"></audio>';
+                        }
                         htmlText += '<h2>类型：';
                         if(rows[i].type===0){
                             htmlText += '图片';
@@ -79,6 +87,7 @@
                             htmlText += '音乐';
                         }
                         htmlText += '</h2>';
+                        htmlText+='<a onclick="download('+rows[i].id+')" sylte="color:blue;">点我下载</a>';
                         htmlText += '<p class="post-meta">作者：<a href="#">'
                             + rows[i].userName
                             + '</a> &nbsp;&nbsp; '
@@ -95,6 +104,28 @@
                     }
                 }
             });
+    }
+    
+    function download(id) {
+        layer.confirm('确定要删除选中的记录？', {
+            btn: ['确定', '取消']
+        }, function () {
+            $.ajax({
+                url: "/common/sysFile/download",
+                type: "post",
+                data: {
+                    'id': id
+                },
+                success: function (r) {
+                    if (r.code == 0) {
+                        layer.msg(r.msg);
+                        bindList(0);
+                    } else {
+                        layer.msg(r.msg);
+                    }
+                }
+            });
+        })
     }
 </script>
 </html>

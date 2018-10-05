@@ -6,6 +6,8 @@ import com.bootdo.common.domain.FileDO;
 import com.bootdo.common.domain.FileRelation;
 import com.bootdo.common.service.FileService;
 import com.bootdo.common.utils.*;
+import com.bootdo.system.domain.RechargeDO;
+import com.bootdo.system.service.RechargeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,8 @@ public class FileController extends BaseController {
 
     @Autowired
     private FileService sysFileService;
-
+    @Autowired
+    private RechargeService rechargeService;
     @Autowired
     private BootdoConfig bootdoConfig;
 
@@ -176,4 +179,34 @@ public class FileController extends BaseController {
         return pageUtil;
     }
 
+    /**
+     * 下载
+     */
+    @PostMapping("/download")
+    @ResponseBody
+    public R download(Long id) {
+        //1.先查询该文件是否需要会员
+        FileDO fileDO=  sysFileService.get(id);
+        //
+        //2.再判断该用户是否是会员
+        int flag=0;//默认不是会员
+        Map<String, Object> map=new HashMap<>();
+        map.put("userId",getUser().getUserId());
+        List<RechargeDO> rechargeDOList =rechargeService.list(map);
+        for(RechargeDO rechargeDO:rechargeDOList){
+            if(rechargeDO.getBeginTime().before(new Date())&&rechargeDO
+                    .getEndTime().after(new Date())){
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0){//不是会员
+            return R.error("数据库记录删除成功，文件删除失败");
+
+        }else if(flag==1){//是会员
+            return R.ok();
+
+        }
+        return R.ok();
+    }
 }

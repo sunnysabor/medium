@@ -47,7 +47,8 @@ public class RechargeController extends BaseController {
     @Log("保存充值记录")
     @PostMapping("/save")
     @ResponseBody
-    R save(RechargeDO recharge) {
+    R save(String number) {
+        RechargeDO recharge=new RechargeDO();
         if (rechargeService.save(recharge) > 0) {
             return R.ok();
         }
