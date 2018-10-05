@@ -1,8 +1,11 @@
 package com.bootdo.common.controller;
 
 import com.bootdo.common.config.BootdoConfig;
+import com.bootdo.common.domain.CommentDO;
 import com.bootdo.common.domain.FileDO;
 import com.bootdo.common.domain.FileRelation;
+import com.bootdo.common.domain.FileRelationComment;
+import com.bootdo.common.service.CommentService;
 import com.bootdo.common.service.FileService;
 import com.bootdo.common.utils.*;
 import com.bootdo.system.domain.RechargeDO;
@@ -15,10 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.xml.stream.events.Comment;
+import java.util.*;
 
 /**
  * 文件上传
@@ -37,6 +38,8 @@ public class FileController extends BaseController {
   private RechargeService rechargeService;
   @Autowired
   private BootdoConfig bootdoConfig;
+  @Autowired
+  private CommentService commentService;
 
   @GetMapping()
   String sysFile(Model model) {
@@ -49,9 +52,10 @@ public class FileController extends BaseController {
   public PageUtils list(@RequestParam Map<String, Object> params) {
     // 查询列表数据
     Query query = new Query(params);
-    List<FileRelation> sysFileList = sysFileService.listRelation(query);
+    //List<FileRelation> sysFileList = sysFileService.listRelation(query);
+    List<FileRelationComment> fileRelationComments = getList(query);
     int total = sysFileService.count(query);
-    PageUtils pageUtils = new PageUtils(sysFileList, total);
+    PageUtils pageUtils = new PageUtils(fileRelationComments, total);
     return pageUtils;
   }
 
@@ -188,10 +192,25 @@ public class FileController extends BaseController {
     // 查询列表数据
     params.put("userId", getUser().getUserId());
     Query query = new Query(params);
-    List<FileRelation> fileRelationList = sysFileService.listRelation(query);
+    List<FileRelationComment> fileRelationComments = getList(query);
     int total = sysFileService.count(query);
-    PageUtils pageUtil = new PageUtils(fileRelationList, total);
+    PageUtils pageUtil = new PageUtils(fileRelationComments, total);
     return pageUtil;
+  }
+
+  private List<FileRelationComment> getList(Query query) {
+    List<FileRelationComment> fileRelationComments = new ArrayList<>();
+    List<FileRelation> fileRelationList = sysFileService.listRelation(query);
+    for (FileRelation fileRelation : fileRelationList) {
+      Map commentQuery = new HashMap();
+      commentQuery.put("fileId", fileRelation.getId());
+      List<CommentDO> commentDOS = commentService.list(commentQuery);
+      FileRelationComment fileRelationComment = new FileRelationComment();
+      fileRelationComment.setCommentDOList(commentDOS);
+      fileRelationComment.setFileRelation(fileRelation);
+      fileRelationComments.add(fileRelationComment);
+    }
+    return fileRelationComments;
   }
 
   /**
