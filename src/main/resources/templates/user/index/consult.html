@@ -17,7 +17,11 @@
         </div>
     </div>
 </header>
-
+<style>
+    .layui-upload-file {
+        display: none !important;
+    }
+</style>
 <!-- Main Content -->
 <div class="container">
     <div class="row">
@@ -68,10 +72,8 @@
 
     function bindList(offset) {
         $('#incomeNum').html("");
-        $
-            .ajax({
-                url: '/common/consult/list?limit=10&offset=' +
-                offset,
+        $.ajax({
+                url: '/common/consult/list?limit=100&offset=0',
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
@@ -89,7 +91,8 @@
                             + ' &nbsp;&nbsp; '
                             + rows[i].createTime +
                             ' &nbsp;&nbsp; 阅读量：<a style="color:red;">'+rows[i].readed+'</a>点赞数：<a style="color:red;">'+rows[i].gooded+'</a></p>';
-                        htmlText=htmlText+'<button class="btn-primary" onclick="addGood('+rows[i].id+')">点赞</button>';
+                        htmlText=htmlText+'<button class="btn-primary" onclick="addGood('+rows[i].id+')">点赞</button>&nbsp;&nbsp;';
+                        htmlText=htmlText+'<button class="btn-primary" id="test'+rows[i].id+'">我要上传</button>';
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }
@@ -103,5 +106,37 @@
                 }
             });
     }
+</script>
+<script type="text/javascript">
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        var rows=[];
+        $.ajax({
+            url: '/common/consult/list?limit=100&offset=0',
+            method: 'get',
+            dataType: 'json',
+            success: function (data) {
+                document.getElementById("layui-layer100001").style.display =
+                    "none";
+                rows = data.rows;
+                //执行实例
+                for(var i=0;i<rows.length;i++){
+                    var uploadInst = upload.render({
+                        elem: '#test'+rows[i].id, //绑定元素
+                        url: '/common/sysFile/uploadconsult/'+rows[i].id, //上传接口
+                        size: 1000,
+                        accept: 'file',
+                        done: function (r) {
+                            layer.msg(r.msg);
+                            location.reload(true);
+                        },
+                        error: function (r) {
+                            layer.msg(r.msg);
+                        }
+                    });
+                }
+            }
+        });
+    });
 </script>
 </html>
