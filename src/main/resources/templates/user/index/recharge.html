@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div id="createTime">当前会员到${}到期</div>
+            <div id="createTime"></div>
             <button onclick="showmodal(1)">充值一个月的会员</button>
             <button onclick="showmodal(3)">充值三个月的会员</button>
             <button onclick="showmodal(6)">充值六个月的会员</button>
@@ -52,9 +52,18 @@
     function nextPage() {
         bindList(currentPage * limit)
     }
-function getRechargeTime() {
 
-}
+    function getRechargeTime() {
+        $('#createTime').html("");
+        $.ajax({
+            url: "/sys/recharge/judge",
+            type: "get",
+            success: function (r) {
+                $('#createTime').html(r.msg);
+            }
+        });
+    }
+
     function bindList(offset) {
         $('#incomeNum').html("");
         $
@@ -73,7 +82,7 @@ function getRechargeTime() {
                             + rows[i].amount
                             + ' &nbsp;&nbsp;类型： '
                             + rows[i].type +
-                            ' &nbsp;&nbsp; 开始时间：'+rows[i].beginTime+'&nbsp;&nbsp;结束时间'+rows[i].endTime+'</p>';
+                            ' &nbsp;&nbsp; 开始时间：' + rows[i].beginTime + '&nbsp;&nbsp;结束时间' + rows[i].endTime + '</p>';
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }
@@ -87,7 +96,7 @@ function getRechargeTime() {
                 }
             });
     }
-    
+
     function showmodal(type) {
         layer.confirm("确认要要充值'" + type + "'个月的会员吗?", {
             btn: ['确定', '取消']

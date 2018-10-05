@@ -44,6 +44,8 @@
             <if test="url != null and url != ''">and url = #{url}</if>
             <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
             <if test="consultId != null and consultId != ''">and consult_id = #{consultId}</if>
+            <if test="userId != null and userId != ''">and f.user_id =
+                #{userId}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -66,6 +68,8 @@
             <if test="url != null and url != ''">and url = #{url}</if>
             <if test="createDate != null and createDate != ''">and create_date = #{createDate}</if>
             <if test="consultId != null and consultId != ''">and consult_id = #{consultId}</if>
+            <if test="userId != null and userId != ''">and user_id =
+                #{userId}</if>
         </where>
     </select>
 

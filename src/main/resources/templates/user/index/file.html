@@ -59,19 +59,37 @@
                     var rows = data.rows;
                     total = data.total;
                     var htmlText = "";
-                    for (i = 0; i < rows.length; i++) {
+                    for (var i = 0; i < rows.length; i++) {
                         htmlText += '<div class="post-preview">';
-                        htmlText += '<a href="/common/sysFile/open/post/' +
-                            rows[i].id + '">';
-                        htmlText += '<h2 class="post-title">';
-                        htmlText += rows[i].url;
+                        if(rows[i].type==0){
+                            htmlText +=
+                                '<img  style="width: 400px;height: 400px;" src="' +
+                                rows[i].url + '">';
+                        }else if(rows[i].type==1){
+                            htmlText += '<a href="' +
+                                rows[i].url + '"></a>';
+                        }else if(rows[i].type==2){
+                            htmlText +=
+                                '<video style="width: 400px;height: 400px;" controls="controls" src="' +
+                                rows[i].url + '"></video>';
+                        }else if(rows[i].type==3){
+                            htmlText +=
+                                '<audio  controls="controls" src="' +
+                                rows[i].url + '"></audio>';
+                        }
+                        htmlText += '<h2>类型：';
+                        if(rows[i].type===0){
+                            htmlText += '图片';
+                        }else if(rows[i].type==1){
+                            htmlText += '文档';
+                        }else if(rows[i].type==2){
+                            htmlText += '视频';
+                        }else if(rows[i].type==3){
+                            htmlText += '音乐';
+                        }
                         htmlText += '</h2>';
                         htmlText += '</a>';
-                        htmlText += '<p class="post-meta">作者：<a href="#">'
-                            + rows[i].userName
-                            + '</a> &nbsp;&nbsp; '
-                            + rows[i].createDate +
-                            ' &nbsp;&nbsp; <button onclick="remove('+rows[i].id+')">删除</button>'+'</p>';
+                        htmlText+='<button onclick="remove('+rows[i].id+')" style="color:blue;">删除</button>';
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }

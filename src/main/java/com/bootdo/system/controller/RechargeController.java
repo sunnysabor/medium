@@ -42,7 +42,7 @@ public class RechargeController extends BaseController {
 
   @GetMapping("/judge")
   @ResponseBody
-  R list() {
+  R judge() {
     // 查询列表数据
     Map map = new HashMap();
     map.put("userId", getUserId());
@@ -58,7 +58,6 @@ public class RechargeController extends BaseController {
     if (sortedList.get(0).getEndTime().before(new Date())) {
       return R.ok("会员已过期（" + result + ")");
     }
-
     return R.ok("当前会员到期时间" + result);
   }
 
