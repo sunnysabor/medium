@@ -13,8 +13,8 @@
         select `id`,`user_id`,`file_id`,`create_time` from sys_collection
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="user_id != null and user_id != ''">and user_id = #{user_id}</if>
-            <if test="file_id != null and file_id != ''">and file_id = #{file_id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -33,8 +33,8 @@
         select count(*) from sys_collection
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="user_id != null and user_id != ''">and user_id = #{user_id}</if>
-            <if test="file_id != null and file_id != ''">and file_id = #{file_id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
         </where>
     </select>
 
@@ -48,9 +48,9 @@
 		)
 		values
 		(
-			#{user_id},
-			#{file_id},
-			#{create_time}
+			#{userId},
+			#{fileId},
+			#{createTime}
 		)
 	</insert>
 
@@ -73,8 +73,9 @@
             c.file_id=f.id
             and c.user_id=u.user_id
             <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="user_id != null and user_id != ''">and user_id = #{user_id}</if>
-            <if test="file_id != null and file_id != ''">and file_id = #{file_id}</if>
+            <if test="userId != null and userId != ''">and user_id =
+                #{userId}</if>
+            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">

@@ -87,7 +87,9 @@
                             htmlText += '音乐';
                         }
                         htmlText += '</h2>';
-                        htmlText+='<button onclick="download('+rows[i].id+')" style="color:blue;">点我下载</button>';
+                        htmlText+='<button onclick="view('+rows[i].id+')" style="color:blue;">查看详情</button>&nbsp;&nbsp;';
+                        htmlText+='<button onclick="download('+rows[i].id+')" style="color:blue;">点我下载</button>&nbsp;&nbsp;';
+                        htmlText+='<button onclick="collection('+rows[i].id+')" style="color:blue;">点我收藏</button>&nbsp;&nbsp;';
                         htmlText += '<p class="post-meta">作者：<a href="#">'
                             + rows[i].userName
                             + '</a> &nbsp;&nbsp; '
@@ -112,6 +114,23 @@
             type: "post",
             data: {
                 'id': id
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    download1(r.msg,r.msg.substring(7));
+                } else {
+                    layer.msg(r.msg);
+                }
+            }
+        });
+    }
+
+    function collection(id) {
+        $.ajax({
+            url: "/common/collection/save",
+            type: "post",
+            data: {
+                'fileId': id
             },
             success: function (r) {
                 if (r.code == 0) {
