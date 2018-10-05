@@ -48,6 +48,7 @@
     }
 
     function bindList(offset) {
+        $('#incomeNum').html("");
         $
             .ajax({
                 url: '/common/sysFile/list?status=Audited&limit=10&offset=' +
@@ -134,7 +135,8 @@
             },
             success: function (r) {
                 if (r.code == 0) {
-                    download1(r.msg,r.msg.substring(7));
+                    layer.msg(r.msg);
+                    bindList(0);
                 } else {
                     layer.msg(r.msg);
                 }

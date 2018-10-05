@@ -48,12 +48,12 @@
 		values
 		(
 			#{id},
-			#{user_id},
+			#{userId},
 			#{type},
-			#{begin_time},
-			#{end_time},
+			#{beginTime},
+			#{endTime},
 			#{amount},
-			#{gmt_create}
+			#{gmtCreate}
 		)
 	</insert>
 

@@ -49,6 +49,7 @@
     }
 
     function bindList(offset) {
+        $('#incomeNum').html("");
         $
             .ajax({
                 url: '/common/collection/minecollection?limit=10&offset=' +
@@ -59,19 +60,28 @@
                     var rows = data.rows;
                     total = data.total;
                     var htmlText = "";
-                    for (i = 0; i < rows.length; i++) {
+                    for (var i = 0; i < rows.length; i++) {
                         htmlText += '<div class="post-preview">';
-                        htmlText += '<a href="/common/sysFile/open/post/' +
-                            rows[i].id + '">';
-                        htmlText += '<h2 class="post-title">';
-                        htmlText += rows[i].content;
-                        htmlText += '</h2>';
-                        htmlText += '</a>';
-                        htmlText += '<p class="post-meta">作者：<a href="#">'
-                            + rows[i].userName
-                            + '</a> &nbsp;&nbsp; '
-                            + rows[i].createTime +
-                            ' &nbsp;&nbsp; 阅读量：<a style="color:red;">'+rows[i].readed+'</a>点赞数：<a style="color:red;">'+rows[i].gooded+'</a></p>';
+                        if(rows[i].fileType==0){
+                            htmlText +=
+                                '<img  style="width: 400px;height: 400px;" src="' +
+                                rows[i].fileUrl + '">';
+                        }else if(rows[i].fileType==1){
+                            htmlText += '<a href="' +
+                                rows[i].fileUrl + '"></a>';
+                        }else if(rows[i].fileType==2){
+                            htmlText +=
+                                '<video style="width: 400px;height: 400px;" controls="controls" src="' +
+                                rows[i].fileUrl + '"></video>';
+                        }else if(rows[i].fileType==3){
+                            htmlText +=
+                                '<audio  controls="controls" src="' +
+                                rows[i].fileUrl + '"></audio>';
+                        }
+                        htmlText += '<p class="post-meta">收藏时间'
+                            + rows[i].createTime
+                            + ' &nbsp;&nbsp; '
+                        htmlText+='<button onclick="remove('+rows[i].id+')" style="color:blue;">取消收藏</button>&nbsp;&nbsp;</p>';
                         htmlText += '</div>';
                         htmlText += '<hr>';
                     }
@@ -84,6 +94,29 @@
                     }
                 }
             });
+    }
+    
+    function remove(id) {
+        layer.confirm("确认要要取消该文件的收藏吗?", {
+            btn: ['确定', '取消']
+            // 按钮
+        }, function () {
+            $.ajax({
+                url: "/common/collection/remove",
+                type: "post",
+                data: {
+                    'id': id
+                },
+                success: function (r) {
+                    if (r.code == 0) {
+                        layer.msg(r.msg);
+                        bindList(0);
+                    } else {
+                        layer.msg(r.msg);
+                    }
+                }
+            });
+        });
     }
 </script>
 </html>

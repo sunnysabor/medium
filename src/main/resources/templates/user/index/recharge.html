@@ -11,7 +11,6 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>BootDo Blog</h1>
                     <span class="subheading">多媒体素材管理系统</span>
                 </div>
             </div>
@@ -23,6 +22,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div id="createTime">当前会员到${}到期</div>
+            <button onclick="showmodal(1)">充值一个月的会员</button>
+            <button onclick="showmodal(3)">充值三个月的会员</button>
+            <button onclick="showmodal(6)">充值六个月的会员</button>
+            <button onclick="showmodal(12)">充值十二个月的会员</button>
             <div id="incomeNum"></div>
             <div class="clearfix">
                 <p id="flagLoaded" style="display: none; text-align: center;">
@@ -42,13 +46,15 @@
     var total;
     $(function () {
         bindList(0);
-
+        getRechargeTime();
     });
 
     function nextPage() {
         bindList(currentPage * limit)
     }
+function getRechargeTime() {
 
+}
     function bindList(offset) {
         $
             .ajax({
@@ -82,6 +88,29 @@
                     }
                 }
             });
+    }
+    
+    function showmodal(type) {
+        layer.confirm("确认要要充值'" + type + "'个月的会员吗?", {
+            btn: ['确定', '取消']
+            // 按钮
+        }, function () {
+            $.ajax({
+                url: "/sys/recharge/save",
+                type: "post",
+                data: {
+                    'number': type
+                },
+                success: function (r) {
+                    if (r.code == 0) {
+                        layer.msg(r.msg);
+                        bindList(0);
+                    } else {
+                        layer.msg(r.msg);
+                    }
+                }
+            });
+        });
     }
 </script>
 </html>

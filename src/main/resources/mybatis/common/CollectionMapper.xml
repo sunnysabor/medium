@@ -72,10 +72,10 @@
         <where>
             c.file_id=f.id
             and c.user_id=u.user_id
-            <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="userId != null and userId != ''">and user_id =
+            <if test="id != null and id != ''">and c.id = #{id}</if>
+            <if test="userId != null and userId != ''">and c.user_id =
                 #{userId}</if>
-            <if test="fileId != null and fileId != ''">and file_id = #{fileId}</if>
+            <if test="fileId != null and fileId != ''">and c.file_id = #{fileId}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
