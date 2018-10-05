@@ -1,10 +1,7 @@
 package com.bootdo.common.controller;
 
 import com.bootdo.common.config.BootdoConfig;
-import com.bootdo.common.domain.CommentDO;
-import com.bootdo.common.domain.FileDO;
-import com.bootdo.common.domain.FileRelation;
-import com.bootdo.common.domain.FileRelationComment;
+import com.bootdo.common.domain.*;
 import com.bootdo.common.service.CommentService;
 import com.bootdo.common.service.FileService;
 import com.bootdo.common.utils.*;
@@ -204,7 +201,7 @@ public class FileController extends BaseController {
     for (FileRelation fileRelation : fileRelationList) {
       Map commentQuery = new HashMap();
       commentQuery.put("fileId", fileRelation.getId());
-      List<CommentDO> commentDOS = commentService.list(commentQuery);
+      List<CommentRelation> commentDOS = commentService.listCommentRelation(commentQuery);
       FileRelationComment fileRelationComment = new FileRelationComment();
       fileRelationComment.setCommentDOList(commentDOS);
       fileRelationComment.setFileRelation(fileRelation);

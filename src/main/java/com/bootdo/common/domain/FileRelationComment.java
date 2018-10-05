@@ -24,7 +24,7 @@ import java.util.List;
 public class FileRelationComment implements Serializable {
 
   private FileRelation fileRelation;
-  private List<CommentDO> commentDOList;
+  private List<CommentRelation> commentDOList;
 
   public FileRelation getFileRelation() {
     return fileRelation;
@@ -34,11 +34,11 @@ public class FileRelationComment implements Serializable {
     this.fileRelation = fileRelation;
   }
 
-  public List<CommentDO> getCommentDOList() {
+  public List<CommentRelation> getCommentDOList() {
     return commentDOList;
   }
 
-  public void setCommentDOList(List<CommentDO> commentDOList) {
+  public void setCommentDOList(List<CommentRelation> commentDOList) {
     this.commentDOList = commentDOList;
   }
 }
