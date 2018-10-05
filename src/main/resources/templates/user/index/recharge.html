@@ -23,10 +23,10 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div id="createTime"></div>
-            <button onclick="showmodal(1)">充值一个月的会员</button>
-            <button onclick="showmodal(3)">充值三个月的会员</button>
-            <button onclick="showmodal(6)">充值六个月的会员</button>
-            <button onclick="showmodal(12)">充值十二个月的会员</button>
+            <button onclick="showmodal(1)" class="btn-primary">充值一个月的会员</button>
+            <button onclick="showmodal(3)"  class="btn-primary">充值三个月的会员</button>
+            <button onclick="showmodal(6)"  class="btn-primary">充值六个月的会员</button>
+            <button onclick="showmodal(12)"  class="btn-primary">充值十二个月的会员</button>
             <div id="incomeNum"></div>
             <div class="clearfix">
                 <p id="flagLoaded" style="display: none; text-align: center;">
@@ -98,7 +98,7 @@
     }
 
     function showmodal(type) {
-        layer.confirm("确认要要充值'" + type + "'个月的会员吗?", {
+        layer.confirm("确认要要充值" + type + "个月的会员吗?", {
             btn: ['确定', '取消']
             // 按钮
         }, function () {
