@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="guest/include_file::header"></head>
+<body>
+<nav th:include="guest/include_file::nav"
+     class="navbar navbar-default navbar-custom navbar-fixed-top"></nav>
+<header class="intro-header"
+        style="background-image: url('/img/blog/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <span class="subheading">多媒体素材管理系统</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div id="incomeNum"></div>
+            <div class="clearfix">
+                <p id="flagLoaded" style="display: none; text-align: center;">
+                    已全部加载</p>
+                <a id="flagLoad" style="display: none;"
+                   class="btn btn-secondary float-right"
+                   href="javascript:void(0)" onclick="nextPage()">更早 &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<div th:include="guest/include_file::footer"></div>
+<script type="text/javascript">
+    var limit = 10;
+    var currentPage = 0;
+    var total;
+    $(function () {
+        bindList(0);
+    });
+
+    function nextPage() {
+        bindList(currentPage * limit)
+    }
+
+    function bindList(offset) {
+        $('#incomeNum').html("");
+        $
+            .ajax({
+                url: '/common/sysFile/list?status=Audited&limit=10&offset=' +
+                offset,
+                method: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    var rows = data.rows;
+                    total = data.total;
+                    var htmlText = "";
+                    for (i = 0; i < rows.length; i++) {
+                        htmlText += '<div class="post-preview">';
+                        if (rows[i].type == 0) {
+                            htmlText +=
+                                '<img  style="width: 400px;height: 400px;" src="' +
+                                rows[i].url + '">';
+                        } else if (rows[i].type == 1) {
+                            htmlText += '<a>文档素材</a>';
+                        } else if (rows[i].type == 2) {
+                            htmlText +=
+                                '<video style="width: 400px;height: 400px;" controls="controls" src="' +
+                                rows[i].url + '"></video>';
+                        } else if (rows[i].type == 3) {
+                            htmlText +=
+                                '<audio  controls="controls" src="' +
+                                rows[i].url + '"></audio>';
+                        }
+                        htmlText += '<h2>类型：';
+                        if (rows[i].type === 0) {
+                            htmlText += '图片';
+                        } else if (rows[i].type == 1) {
+                            htmlText += '文档';
+                        } else if (rows[i].type == 2) {
+                            htmlText += '视频';
+                        } else if (rows[i].type == 3) {
+                            htmlText += '音乐';
+                        }
+                        htmlText += '</h2>';
+                        htmlText += '<button onclick="view(' + rows[i].id + ')" style="color:blue;">查看详情</button>&nbsp;&nbsp;';
+                        htmlText += '<p class="post-meta">作者：<a href="#">'
+                            + rows[i].userName
+                            + '</a> &nbsp;&nbsp; '
+                            + rows[i].createDate + '</p>';
+                        htmlText += '</div>';
+                        htmlText += '<hr>';
+                    }
+                    $("#incomeNum").append(htmlText);
+                    document.getElementById("flagLoad").style.display = "block";
+                    currentPage++;
+                    if (total <= currentPage * limit) {
+                        document.getElementById("flagLoaded").style.display = "block";
+                        document.getElementById("flagLoad").style.display = "none";
+                    }
+                }
+            });
+    }
+
+
+</script>
+</html>
