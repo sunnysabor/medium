@@ -1,11 +1,9 @@
 package com.bootdo.system.config;
 
-import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import com.bootdo.common.redis.shiro.RedisCacheManager;
-import com.bootdo.common.redis.shiro.RedisManager;
-import com.bootdo.common.redis.shiro.RedisSessionDAO;
-import com.bootdo.system.shiro.UserRealm;
-import net.sf.ehcache.CacheManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.SessionListener;
@@ -20,9 +18,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
+import com.bootdo.system.redis.RedisCacheManager;
+import com.bootdo.system.redis.RedisManager;
+import com.bootdo.system.redis.RedisSessionDAO;
+import com.bootdo.system.shiro.UserRealm;
+
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import net.sf.ehcache.CacheManager;
 
 //import org.apache.shiro.cache.CacheManager;
 

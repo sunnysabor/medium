@@ -1,7 +1,7 @@
 package com.bootdo.system.service;
 
-import com.bootdo.common.domain.Tree;
 import com.bootdo.system.domain.MenuDO;
+import com.bootdo.system.domain.Tree;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

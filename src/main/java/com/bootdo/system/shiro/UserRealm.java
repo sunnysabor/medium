@@ -1,18 +1,25 @@
 package com.bootdo.system.shiro;
 
-import com.bootdo.common.config.ApplicationContextRegister;
-import com.bootdo.system.dao.UserDao;
-import com.bootdo.system.domain.UserDO;
-import com.bootdo.system.service.MenuService;
-import org.apache.shiro.authc.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import com.bootdo.system.config.ApplicationContextRegister;
+import com.bootdo.system.dao.UserDao;
+import com.bootdo.system.domain.UserDO;
+import com.bootdo.system.service.MenuService;
 
 public class UserRealm extends AuthorizingRealm {
 

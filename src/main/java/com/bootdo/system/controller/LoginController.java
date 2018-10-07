@@ -1,15 +1,7 @@
 package com.bootdo.system.controller;
 
-import com.bootdo.common.annotation.Log;
-import com.bootdo.common.controller.BaseController;
-import com.bootdo.common.domain.FileDO;
-import com.bootdo.common.domain.Tree;
-import com.bootdo.common.service.FileService;
-import com.bootdo.common.utils.MD5Utils;
-import com.bootdo.common.utils.R;
-import com.bootdo.common.utils.ShiroUtils;
-import com.bootdo.system.domain.MenuDO;
-import com.bootdo.system.service.MenuService;
+import java.util.List;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -23,7 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+import com.bootdo.system.annotation.Log;
+import com.bootdo.system.domain.FileDO;
+import com.bootdo.system.domain.MenuDO;
+import com.bootdo.system.domain.Tree;
+import com.bootdo.system.service.FileService;
+import com.bootdo.system.service.MenuService;
+import com.bootdo.system.utils.MD5Utils;
+import com.bootdo.system.utils.R;
+import com.bootdo.system.utils.ShiroUtils;
 
 @Controller
 public class LoginController extends BaseController {
