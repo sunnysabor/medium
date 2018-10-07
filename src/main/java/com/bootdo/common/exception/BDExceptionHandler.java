@@ -1,6 +1,5 @@
 package com.bootdo.common.exception;
 
-import com.bootdo.common.config.Constant;
 import com.bootdo.common.domain.LogDO;
 import com.bootdo.common.service.LogService;
 import com.bootdo.common.utils.HttpServletUtils;
@@ -65,7 +64,7 @@ public class BDExceptionHandler {
     public Object handleException(Exception e, HttpServletRequest request) {
         LogDO logDO = new LogDO();
         logDO.setGmtCreate(new Date());
-        logDO.setOperation(Constant.LOG_ERROR);
+        logDO.setOperation("error");
         logDO.setMethod(request.getRequestURL().toString());
         logDO.setParams(e.toString());
         UserDO current = ShiroUtils.getUser();

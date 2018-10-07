@@ -1,7 +1,6 @@
 package com.bootdo.system.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import com.bootdo.common.config.Constant;
 import com.bootdo.common.redis.shiro.RedisCacheManager;
 import com.bootdo.common.redis.shiro.RedisManager;
 import com.bootdo.common.redis.shiro.RedisSessionDAO;
@@ -95,7 +94,7 @@ public class ShiroConfig {
         //设置realm.
         securityManager.setRealm(userRealm());
         // 自定义缓存实现 使用redis
-        if (Constant.CACHE_TYPE_REDIS.equals(cacheType)) {
+        if ("redis".equals(cacheType)) {
             securityManager.setCacheManager(rediscacheManager());
         } else {
             securityManager.setCacheManager(ehCacheManager());
@@ -166,7 +165,7 @@ public class ShiroConfig {
 
     @Bean
     public SessionDAO sessionDAO() {
-        if (Constant.CACHE_TYPE_REDIS.equals(cacheType)) {
+        if ("redis".equals(cacheType)) {
             return redisSessionDAO();
         } else {
             return new MemorySessionDAO();
