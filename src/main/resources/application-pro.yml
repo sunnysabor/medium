@@ -1,10 +1,9 @@
-bootdo:
-  uploadPath: /var/uploaded_files/
+medium:
+  uploadPath: c:/var/uploaded_files/
 logging:
   level:
-    root: error
-    com.bootdo: info
-    com.bootdo.common.dao: debug
+    root: info
+    cn.neusoft.myproject: debug
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

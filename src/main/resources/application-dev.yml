@@ -1,9 +1,9 @@
-bootdo:
+medium:
   uploadPath: c:/var/uploaded_files/
 logging:
   level:
     root: info
-    com.bootdo: debug
+    cn.neusoft.myproject: debug
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

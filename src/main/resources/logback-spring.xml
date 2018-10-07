@@ -23,7 +23,7 @@
         </layout>
     </appender>
 
-    <logger name="com.bootdo" additivity="false">
+    <logger name="cn.neusoft" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="logFile"/>
     </logger>
