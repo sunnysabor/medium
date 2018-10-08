@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.neusoft.myproject.annotation.Log;
+import cn.neusoft.myproject.aspect.Log;
 import cn.neusoft.myproject.domain.RechargeDO;
 import cn.neusoft.myproject.service.RechargeService;
 import cn.neusoft.myproject.utils.PageUtils;

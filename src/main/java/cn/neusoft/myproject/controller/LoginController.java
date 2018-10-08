@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.neusoft.myproject.annotation.Log;
+import cn.neusoft.myproject.aspect.Log;
 import cn.neusoft.myproject.domain.FileDO;
 import cn.neusoft.myproject.domain.MenuDO;
 import cn.neusoft.myproject.domain.Tree;
