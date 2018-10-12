@@ -24,7 +24,7 @@ import cn.neusoft.myproject.utils.MD5Utils;
 import cn.neusoft.myproject.utils.PageUtils;
 import cn.neusoft.myproject.utils.Query;
 import cn.neusoft.myproject.utils.R;
-import cn.neusoft.myproject.vo.UserVO;
+import cn.neusoft.myproject.utils.UserVO;
 
 @RequestMapping("/sys/user")
 @Controller

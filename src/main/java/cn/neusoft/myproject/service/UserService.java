@@ -4,11 +4,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.neusoft.myproject.domain.UserDO;
-import cn.neusoft.myproject.vo.UserVO;
+import cn.neusoft.myproject.utils.UserVO;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 //用户的service
 @Service

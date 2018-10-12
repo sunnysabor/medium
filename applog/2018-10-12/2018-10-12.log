@@ -1,0 +1,400 @@
+2018-10-12 10:30:33 -Starting MediumDoApplication on chenchen-PC with PID 11012 (D:\medium\target\classes started by chenchen in D:\medium)
+2018-10-12 10:30:33 -Running with Spring Boot v2.0.3.RELEASE, Spring v5.0.7.RELEASE
+2018-10-12 10:30:33 -The following profiles are active: pro
+2018-10-12 10:30:33 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7e928e2f: startup date [Fri Oct 12 10:30:33 CST 2018]; root of context hierarchy
+2018-10-12 10:30:36 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-10-12 10:30:37 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5dc3a77d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -Bean 'shiroConfig' of type [cn.neusoft.myproject.config.ShiroConfig$$EnhancerBySpringCGLIB$$f8d04073] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -Bean 'userRealm' of type [cn.neusoft.myproject.shiro.UserRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/D:/Repository/m2repo/net/sf/ehcache/ehcache/2.10.5/ehcache-2.10.5.jar!/ehcache-failsafe.xml
+2018-10-12 10:30:37 -Bean 'cacheManager2' of type [net.sf.ehcache.CacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -Bean 'ehCacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -Cache with name 'cn.neusoft.myproject.shiro.UserRealm.authorizationCache' does not yet exist.  Creating now.
+2018-10-12 10:30:37 -Added EhCache named [cn.neusoft.myproject.shiro.UserRealm.authorizationCache]
+2018-10-12 10:30:37 -Bean 'sessionDAO' of type [org.apache.shiro.session.mgt.eis.MemorySessionDAO] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:37 -Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:38 -Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-10-12 10:30:38 -Tomcat initialized with port(s): 80 (http)
+2018-10-12 10:30:38 -Initializing ProtocolHandler ["http-nio-80"]
+2018-10-12 10:30:38 -Starting service [Tomcat]
+2018-10-12 10:30:38 -Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-10-12 10:30:38 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_65\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jre1.8.0_65\bin;C:\Program Files\Java\jre1.8.0_65\jre\bin;C:\Program Files\Java\jdk1.7.0_79\bin;C:\Program Files\Java\jdk1.7.0_79\jre\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Java\apache-maven-3.0.4\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\TortoiseSVN\bin;E:\vc\Tools\WinNT;E:\vc\MSDev98\Bin;E:\vc\Tools;E:\VC98\bin;C:\Users\chenchen\AppData\Roaming\npm;.]
+2018-10-12 10:30:38 -Initializing Spring embedded WebApplicationContext
+2018-10-12 10:30:38 -Root WebApplicationContext: initialization completed in 5047 ms
+2018-10-12 10:30:39 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-10-12 10:30:39 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-10-12 10:30:39 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-10-12 10:30:39 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-10-12 10:30:39 -Filter xssFilter was not registered (disabled)
+2018-10-12 10:30:39 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-10-12 10:30:39 -Mapping filter: 'shiroFilterFactoryBean' to: [/*]
+2018-10-12 10:30:39 -Servlet statViewServlet mapped to [/druid/*]
+2018-10-12 10:30:39 -Servlet dispatcherServlet mapped to [/]
+2018-10-12 10:30:40 -{dataSource-1} inited
+2018-10-12 10:30:41 -ApplicationContext registed-->org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7e928e2f: startup date [Fri Oct 12 10:30:33 CST 2018]; root of context hierarchy
+2018-10-12 10:30:42 -Mapped "{[/common/collection/add],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CollectionController.add(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/collection/remove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CollectionController.remove(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/collection/list],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.CollectionController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/collection/save],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CollectionController.save(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/collection/batchRemove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CollectionController.batchRemove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/common/collection],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CollectionController.collection(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/collection/userlist],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CollectionController.userlist()
+2018-10-12 10:30:42 -Mapped "{[/common/collection/minecollection],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.CollectionController.minecollection(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/add/{fileId}],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CommentController.add(org.springframework.ui.Model,java.lang.String)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/remove],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CommentController.remove(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/batchRemove],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CommentController.remove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/common/comment/update]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CommentController.update(cn.neusoft.myproject.domain.CommentDO)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/list],methods=[GET]}" onto public cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.CommentController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/save],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.CommentController.save(java.lang.String,java.lang.Long) throws java.lang.Exception
+2018-10-12 10:30:42 -Mapped "{[/common/comment],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CommentController.comment(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/userlist],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CommentController.userlist()
+2018-10-12 10:30:42 -Mapped "{[/common/comment/edit],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.CommentController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/comment/minecomment],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.CommentController.minecomment(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/add],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.ConsultController.add()
+2018-10-12 10:30:42 -Mapped "{[/common/consult/remove],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.ConsultController.remove(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/batchRemove],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.ConsultController.remove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/common/consult/update]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.ConsultController.update(cn.neusoft.myproject.domain.ConsultDO)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/list],methods=[GET]}" onto public cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.ConsultController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/save],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.ConsultController.save(java.lang.String) throws java.lang.Exception
+2018-10-12 10:30:42 -Mapped "{[/common/consult/info/{id}]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.ConsultController.info(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/me],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.ConsultController.me()
+2018-10-12 10:30:42 -Mapped "{[/common/consult/userlist],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.ConsultController.userlist()
+2018-10-12 10:30:42 -Mapped "{[/common/consult/edit],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.ConsultController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/consult],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.ConsultController.consult(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/good],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.ConsultController.good(java.lang.Long,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/common/consult/mineconsult],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.ConsultController.mineconsult(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/add],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.FileController.add()
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/remove],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.remove(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/batchRemove],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.remove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/update]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.update(cn.neusoft.myproject.domain.FileDO)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/list],methods=[GET]}" onto public cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.FileController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/save],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.save(cn.neusoft.myproject.domain.FileDO) throws java.lang.Exception
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/updateStatus],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.updateStatus(java.lang.Long,java.lang.String)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/convert],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.updateStatus(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/open/post/{id}],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.FileController.post(java.lang.Long,org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/userlist],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.FileController.userlist()
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/edit],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.FileController.edit(java.lang.Long,org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.FileController.sysFile(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/uploadconsult/{cousultId}],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.upload(org.springframework.web.multipart.MultipartFile,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/upload],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.upload(org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/minefile],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.FileController.minefile(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/sysFile/download],methods=[POST]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.FileController.download(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/log/remove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.LogController.remove(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/common/log],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.LogController.log()
+2018-10-12 10:30:42 -Mapped "{[/common/log/list],methods=[GET]}" onto cn.neusoft.myproject.domain.PageDO<cn.neusoft.myproject.domain.LogDO> cn.neusoft.myproject.controller.LogController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/common/log/batchRemove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.LogController.batchRemove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/index],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.LoginController.index(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/main],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.LoginController.main()
+2018-10-12 10:30:42 -Mapped "{[/logout],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.LoginController.logout()
+2018-10-12 10:30:42 -Mapped "{[/ || ],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.LoginController.welcome(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/login],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.LoginController.login()
+2018-10-12 10:30:42 -Mapped "{[/login],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.LoginController.ajaxLogin(java.lang.String,java.lang.String)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/add/{pId}],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.MenuController.add(org.springframework.ui.Model,java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/remove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.MenuController.remove(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/update],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.MenuController.update(cn.neusoft.myproject.domain.MenuDO)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/list]}" onto java.util.List<cn.neusoft.myproject.domain.MenuDO> cn.neusoft.myproject.controller.MenuController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/save],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.MenuController.save(cn.neusoft.myproject.domain.MenuDO)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/tree],methods=[GET]}" onto cn.neusoft.myproject.domain.Tree<cn.neusoft.myproject.domain.MenuDO> cn.neusoft.myproject.controller.MenuController.tree()
+2018-10-12 10:30:42 -Mapped "{[/sys/menu/edit/{id}],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.MenuController.edit(org.springframework.ui.Model,java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/sys/menu],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.MenuController.menu(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/add],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.RechargeController.add(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/remove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.RechargeController.remove(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/list],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.RechargeController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/save],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.RechargeController.save(java.lang.Integer)
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/batchRemove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.RechargeController.batchRemove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/userlist],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.RechargeController.userlist()
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/judge],methods=[GET]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.RechargeController.judge()
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.RechargeController.recharge(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/recharge/minerecharge],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.RechargeController.minerecharge(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/exit],methods=[POST]}" onto boolean cn.neusoft.myproject.controller.UserController.exit(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/add],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.UserController.add(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/remove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.remove(java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/update],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.update(cn.neusoft.myproject.domain.UserDO)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/list],methods=[GET]}" onto cn.neusoft.myproject.utils.PageUtils cn.neusoft.myproject.controller.UserController.list(java.util.Map<java.lang.String, java.lang.Object>)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/save],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.save(cn.neusoft.myproject.domain.UserDO)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/batchRemove],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.batchRemove(java.lang.Long[])
+2018-10-12 10:30:42 -Mapped "{[/sys/user],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.UserController.user(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/edit/{id}],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.UserController.edit(org.springframework.ui.Model,java.lang.Long)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/updatePeronal],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.updatePeronal(cn.neusoft.myproject.domain.UserDO)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/resetPwd],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.resetPwd(cn.neusoft.myproject.utils.UserVO)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/resetPwd/{id}],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.UserController.resetPwd(java.lang.Long,org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/adminResetPwd],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.adminResetPwd(cn.neusoft.myproject.utils.UserVO)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/treeView],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.UserController.treeView()
+2018-10-12 10:30:42 -Mapped "{[/sys/user/personal],methods=[GET]}" onto java.lang.String cn.neusoft.myproject.controller.UserController.personal(org.springframework.ui.Model)
+2018-10-12 10:30:42 -Mapped "{[/sys/user/uploadImg],methods=[POST]}" onto cn.neusoft.myproject.utils.R cn.neusoft.myproject.controller.UserController.uploadImg(org.springframework.web.multipart.MultipartFile,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/error]}" onto public cn.neusoft.myproject.utils.R cn.neusoft.myproject.exception.MainsiteErrorController.handleError(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-12 10:30:42 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView cn.neusoft.myproject.exception.MainsiteErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-12 10:30:42 -Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-10-12 10:30:42 -Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2018-10-12 10:30:42 -Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2018-10-12 10:30:42 -Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2018-10-12 10:30:42 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-12 10:30:42 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7e928e2f: startup date [Fri Oct 12 10:30:33 CST 2018]; root of context hierarchy
+2018-10-12 10:30:43 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-12 10:30:43 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-12 10:30:43 -Mapped URL path [/files/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-12 10:30:43 -Detected @ExceptionHandler methods in BDExceptionHandler
+2018-10-12 10:30:43 -[THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2018-10-12 10:30:44 -Registering beans for JMX exposure on startup
+2018-10-12 10:30:44 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-10-12 10:30:44 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2018-10-12 10:30:44 -Starting beans in phase 2147483647
+2018-10-12 10:30:44 -Context refreshed
+2018-10-12 10:30:44 -Found 1 custom documentation plugin(s)
+2018-10-12 10:30:44 -Scanning for api listing references
+2018-10-12 10:30:44 -Generating unique operation named: addUsingGET_1
+2018-10-12 10:30:44 -Generating unique operation named: listUsingGET_1
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_1
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_2
+2018-10-12 10:30:45 -Generating unique operation named: saveUsingPOST_1
+2018-10-12 10:30:45 -Generating unique operation named: userlistUsingGET_1
+2018-10-12 10:30:45 -Generating unique operation named: addUsingGET_2
+2018-10-12 10:30:45 -Generating unique operation named: editUsingGET_1
+2018-10-12 10:30:45 -Generating unique operation named: listUsingGET_2
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_3
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_4
+2018-10-12 10:30:45 -Generating unique operation named: saveUsingPOST_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingGET_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingHEAD_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPOST_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPUT_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPATCH_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingDELETE_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingOPTIONS_1
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingTRACE_1
+2018-10-12 10:30:45 -Generating unique operation named: userlistUsingGET_2
+2018-10-12 10:30:45 -Generating unique operation named: addUsingGET_3
+2018-10-12 10:30:45 -Generating unique operation named: editUsingGET_2
+2018-10-12 10:30:45 -Generating unique operation named: listUsingGET_3
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_5
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_6
+2018-10-12 10:30:45 -Generating unique operation named: saveUsingPOST_3
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingGET_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingHEAD_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPOST_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPUT_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPATCH_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingDELETE_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingOPTIONS_2
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingTRACE_2
+2018-10-12 10:30:45 -Generating unique operation named: updateStatusUsingPOST_1
+2018-10-12 10:30:45 -Generating unique operation named: uploadUsingPOST_1
+2018-10-12 10:30:45 -Generating unique operation named: userlistUsingGET_3
+2018-10-12 10:30:45 -Generating unique operation named: batchRemoveUsingPOST_1
+2018-10-12 10:30:45 -Generating unique operation named: listUsingGET_4
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_7
+2018-10-12 10:30:45 -Generating unique operation named: welcomeUsingGET_1
+2018-10-12 10:30:45 -Generating unique operation named: addUsingGET_4
+2018-10-12 10:30:45 -Generating unique operation named: editUsingGET_3
+2018-10-12 10:30:45 -Generating unique operation named: listUsingGET_5
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_8
+2018-10-12 10:30:45 -Generating unique operation named: saveUsingPOST_4
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPOST_3
+2018-10-12 10:30:45 -Generating unique operation named: addUsingGET_5
+2018-10-12 10:30:45 -Generating unique operation named: batchRemoveUsingPOST_2
+2018-10-12 10:30:45 -Generating unique operation named: listUsingGET_6
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_9
+2018-10-12 10:30:45 -Generating unique operation named: saveUsingPOST_5
+2018-10-12 10:30:45 -Generating unique operation named: userlistUsingGET_4
+2018-10-12 10:30:45 -Generating unique operation named: addUsingGET_6
+2018-10-12 10:30:45 -Generating unique operation named: batchRemoveUsingPOST_3
+2018-10-12 10:30:45 -Generating unique operation named: editUsingGET_4
+2018-10-12 10:30:45 -Generating unique operation named: listUsingGET_7
+2018-10-12 10:30:45 -Generating unique operation named: removeUsingPOST_10
+2018-10-12 10:30:45 -Generating unique operation named: saveUsingPOST_6
+2018-10-12 10:30:45 -Generating unique operation named: updateUsingPOST_4
+2018-10-12 10:30:45 -Starting ProtocolHandler ["http-nio-80"]
+2018-10-12 10:30:45 -Using a shared selector for servlet write/read
+2018-10-12 10:30:45 -Tomcat started on port(s): 80 (http) with context path ''
+2018-10-12 10:30:45 -Started MediumDoApplication in 12.829 seconds (JVM running for 14.856)
+2018-10-12 10:31:03 -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-10-12 10:31:03 -FrameworkServlet 'dispatcherServlet': initialization started
+2018-10-12 10:31:03 -FrameworkServlet 'dispatcherServlet': initialization completed in 37 ms
+2018-10-12 10:31:03 -Enabling session validation scheduler...
+2018-10-12 10:31:03 -请求地址 : http://localhost/login
+2018-10-12 10:31:03 -HTTP METHOD : GET
+2018-10-12 10:31:03 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.login
+2018-10-12 10:31:03 -参数 : []
+2018-10-12 10:31:03 -耗时 : 7
+2018-10-12 10:31:03 -返回值 : login
+2018-10-12 10:31:06 -请求地址 : http://localhost/login
+2018-10-12 10:31:06 -HTTP METHOD : POST
+2018-10-12 10:31:06 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.ajaxLogin
+2018-10-12 10:31:06 -参数 : [admin, 111111]
+2018-10-12 10:31:06 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district`,`identity` from sys_user WHERE username = ? order by user_id desc 
+2018-10-12 10:31:07 -==> Parameters: admin(String)
+2018-10-12 10:31:07 -<==      Total: 1
+2018-10-12 10:31:07 -耗时 : 323
+2018-10-12 10:31:07 -返回值 : {msg=用户或密码错误, code=500}
+2018-10-12 10:31:07 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-12 10:31:07 -==> Parameters: -1(Long), 获取用户信息为空(String), 登录(String), 324(Integer), cn.neusoft.myproject.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2018-10-12 10:31:07.171(Timestamp)
+2018-10-12 10:31:07 -<==    Updates: 1
+2018-10-12 10:31:13 -请求地址 : http://localhost/login
+2018-10-12 10:31:13 -HTTP METHOD : POST
+2018-10-12 10:31:13 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.ajaxLogin
+2018-10-12 10:31:13 -参数 : [admin, admin]
+2018-10-12 10:31:13 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district`,`identity` from sys_user WHERE username = ? order by user_id desc 
+2018-10-12 10:31:13 -==> Parameters: admin(String)
+2018-10-12 10:31:13 -<==      Total: 1
+2018-10-12 10:31:13 -耗时 : 90
+2018-10-12 10:31:13 -返回值 : {msg=操作成功, code=0}
+2018-10-12 10:31:13 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-12 10:31:13 -==> Parameters: 1(Long), admin(String), 登录(String), 90(Integer), cn.neusoft.myproject.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2018-10-12 10:31:13.2(Timestamp)
+2018-10-12 10:31:13 -<==    Updates: 1
+2018-10-12 10:31:13 -请求地址 : http://localhost/index
+2018-10-12 10:31:13 -HTTP METHOD : GET
+2018-10-12 10:31:13 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.index
+2018-10-12 10:31:13 -参数 : [{}]
+2018-10-12 10:31:13 -==>  Preparing: select `menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified` from sys_menu order by order_num asc 
+2018-10-12 10:31:13 -==> Parameters: 
+2018-10-12 10:31:13 -<==      Total: 9
+2018-10-12 10:31:13 -==>  Preparing: select * from sys_file where id = ? 
+2018-10-12 10:31:13 -==> Parameters: 138(Long)
+2018-10-12 10:31:13 -<==      Total: 0
+2018-10-12 10:31:13 -耗时 : 447
+2018-10-12 10:31:13 -返回值 : index_v1
+2018-10-12 10:31:13 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-10-12 10:31:13 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 447(Integer), cn.neusoft.myproject.controller.LoginController.index()(String), null, 127.0.0.1(String), 2018-10-12 10:31:13.861(Timestamp)
+2018-10-12 10:31:13 -<==    Updates: 1
+2018-10-12 10:31:14 -请求地址 : http://localhost/main
+2018-10-12 10:31:14 -HTTP METHOD : GET
+2018-10-12 10:31:14 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.main
+2018-10-12 10:31:14 -参数 : []
+2018-10-12 10:31:14 -耗时 : 1
+2018-10-12 10:31:14 -返回值 : main
+2018-10-12 10:31:14 -请求地址 : http://localhost/main
+2018-10-12 10:31:14 -HTTP METHOD : GET
+2018-10-12 10:31:14 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.main
+2018-10-12 10:31:14 -参数 : []
+2018-10-12 10:31:14 -耗时 : 0
+2018-10-12 10:31:14 -返回值 : main
+2018-10-12 10:31:17 -请求地址 : http://localhost/sys/user/list
+2018-10-12 10:31:17 -HTTP METHOD : GET
+2018-10-12 10:31:17 -CLASS_METHOD : cn.neusoft.myproject.controller.UserController.list
+2018-10-12 10:31:17 -参数 : [{limit=100, offset=0}]
+2018-10-12 10:31:17 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district`,`identity` from sys_user order by user_id desc limit ?, ? 
+2018-10-12 10:31:17 -==> Parameters: 0(Integer), 100(Integer)
+2018-10-12 10:31:17 -<==      Total: 2
+2018-10-12 10:31:17 -==>  Preparing: select count(*) from sys_user 
+2018-10-12 10:31:17 -==> Parameters: 
+2018-10-12 10:31:17 -<==      Total: 1
+2018-10-12 10:31:17 -耗时 : 446
+2018-10-12 10:31:17 -返回值 : cn.neusoft.myproject.utils.PageUtils@9000c16
+2018-10-12 10:31:25 -请求地址 : http://localhost/common/sysFile
+2018-10-12 10:31:25 -HTTP METHOD : GET
+2018-10-12 10:31:25 -CLASS_METHOD : cn.neusoft.myproject.controller.FileController.sysFile
+2018-10-12 10:31:25 -参数 : [{}]
+2018-10-12 10:31:25 -耗时 : 1
+2018-10-12 10:31:25 -返回值 : common/file/file
+2018-10-12 10:31:26 -请求地址 : http://localhost/common/sysFile/list
+2018-10-12 10:31:26 -HTTP METHOD : GET
+2018-10-12 10:31:26 -CLASS_METHOD : cn.neusoft.myproject.controller.FileController.list
+2018-10-12 10:31:26 -参数 : [{limit=12, offset=0, type=}]
+2018-10-12 10:31:26 -==>  Preparing: select f.*,u.name as user_name from sys_file f,sys_user u WHERE f.user_id=u.user_id order by id desc limit ?, ? 
+2018-10-12 10:31:26 -==> Parameters: 0(Integer), 12(Integer)
+2018-10-12 10:31:26 -<==      Total: 0
+2018-10-12 10:31:26 -==>  Preparing: select count(*) from sys_file 
+2018-10-12 10:31:26 -==> Parameters: 
+2018-10-12 10:31:26 -<==      Total: 1
+2018-10-12 10:31:26 -耗时 : 112
+2018-10-12 10:31:26 -返回值 : cn.neusoft.myproject.utils.PageUtils@2eb86d87
+2018-10-12 10:31:27 -请求地址 : http://localhost/common/comment
+2018-10-12 10:31:27 -HTTP METHOD : GET
+2018-10-12 10:31:27 -CLASS_METHOD : cn.neusoft.myproject.controller.CommentController.comment
+2018-10-12 10:31:27 -参数 : [{}]
+2018-10-12 10:31:27 -耗时 : 1
+2018-10-12 10:31:27 -返回值 : common/comment/comment
+2018-10-12 10:31:28 -请求地址 : http://localhost/common/comment/list
+2018-10-12 10:31:28 -HTTP METHOD : GET
+2018-10-12 10:31:28 -CLASS_METHOD : cn.neusoft.myproject.controller.CommentController.list
+2018-10-12 10:31:28 -参数 : [{limit=10, offset=0}]
+2018-10-12 10:31:28 -==>  Preparing: select c.*,f.url as file_url,f.type as file_type,u.name as user_name from sys_comment c, sys_file f,sys_user u WHERE c.file_id=f.id and c.user_id=u.user_id order by id desc limit ?, ? 
+2018-10-12 10:31:28 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-12 10:31:28 -<==      Total: 0
+2018-10-12 10:31:28 -==>  Preparing: select count(*) from sys_comment 
+2018-10-12 10:31:28 -==> Parameters: 
+2018-10-12 10:31:28 -<==      Total: 1
+2018-10-12 10:31:28 -耗时 : 100
+2018-10-12 10:31:28 -返回值 : cn.neusoft.myproject.utils.PageUtils@6d58c008
+2018-10-12 10:31:29 -请求地址 : http://localhost/common/collection
+2018-10-12 10:31:29 -HTTP METHOD : GET
+2018-10-12 10:31:29 -CLASS_METHOD : cn.neusoft.myproject.controller.CollectionController.collection
+2018-10-12 10:31:29 -参数 : [{}]
+2018-10-12 10:31:29 -耗时 : 1
+2018-10-12 10:31:29 -返回值 : common/collection/collection
+2018-10-12 10:31:30 -请求地址 : http://localhost/common/collection/list
+2018-10-12 10:31:30 -HTTP METHOD : GET
+2018-10-12 10:31:30 -CLASS_METHOD : cn.neusoft.myproject.controller.CollectionController.list
+2018-10-12 10:31:30 -参数 : [{limit=10, offset=0}]
+2018-10-12 10:31:30 -==>  Preparing: select c.*,f.url as file_url,f.type as file_type,u.name as user_name from sys_collection c, sys_file f,sys_user u WHERE c.file_id=f.id and c.user_id=u.user_id order by id desc limit ?, ? 
+2018-10-12 10:31:30 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-12 10:31:30 -<==      Total: 0
+2018-10-12 10:31:30 -==>  Preparing: select count(*) from sys_collection 
+2018-10-12 10:31:30 -==> Parameters: 
+2018-10-12 10:31:30 -<==      Total: 1
+2018-10-12 10:31:30 -耗时 : 86
+2018-10-12 10:31:30 -返回值 : cn.neusoft.myproject.utils.PageUtils@121f685c
+2018-10-12 10:31:31 -请求地址 : http://localhost/sys/user/
+2018-10-12 10:31:31 -HTTP METHOD : GET
+2018-10-12 10:31:31 -CLASS_METHOD : cn.neusoft.myproject.controller.UserController.user
+2018-10-12 10:31:31 -参数 : [{}]
+2018-10-12 10:31:31 -耗时 : 0
+2018-10-12 10:31:31 -返回值 : system/user/user
+2018-10-12 10:31:31 -请求地址 : http://localhost/sys/user/list
+2018-10-12 10:31:31 -HTTP METHOD : GET
+2018-10-12 10:31:31 -CLASS_METHOD : cn.neusoft.myproject.controller.UserController.list
+2018-10-12 10:31:31 -参数 : [{limit=10, offset=0, name=, deptId=}]
+2018-10-12 10:31:31 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district`,`identity` from sys_user order by user_id desc limit ?, ? 
+2018-10-12 10:31:31 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-12 10:31:31 -<==      Total: 2
+2018-10-12 10:31:31 -==>  Preparing: select count(*) from sys_user 
+2018-10-12 10:31:31 -==> Parameters: 
+2018-10-12 10:31:32 -<==      Total: 1
+2018-10-12 10:31:32 -耗时 : 464
+2018-10-12 10:31:32 -返回值 : cn.neusoft.myproject.utils.PageUtils@18217efc
+2018-10-12 10:31:33 -请求地址 : http://localhost/sys/recharge/
+2018-10-12 10:31:33 -HTTP METHOD : GET
+2018-10-12 10:31:33 -CLASS_METHOD : cn.neusoft.myproject.controller.RechargeController.recharge
+2018-10-12 10:31:33 -参数 : [{}]
+2018-10-12 10:31:33 -耗时 : 2
+2018-10-12 10:31:33 -返回值 : system/recharge/recharge
+2018-10-12 10:31:33 -请求地址 : http://localhost/sys/recharge/list
+2018-10-12 10:31:33 -HTTP METHOD : GET
+2018-10-12 10:31:33 -CLASS_METHOD : cn.neusoft.myproject.controller.RechargeController.list
+2018-10-12 10:31:33 -参数 : [{limit=10, offset=0}]
+2018-10-12 10:31:33 -==>  Preparing: select `id`,`user_id`,`type`,`begin_time`,`end_time`,`amount`, `gmt_create` from sys_recharge order by id desc limit ?, ? 
+2018-10-12 10:31:33 -==> Parameters: 0(Integer), 10(Integer)
+2018-10-12 10:31:33 -<==      Total: 0
+2018-10-12 10:31:33 -==>  Preparing: select count(*) from sys_recharge 
+2018-10-12 10:31:33 -==> Parameters: 
+2018-10-12 10:31:33 -<==      Total: 1
+2018-10-12 10:31:33 -耗时 : 414
+2018-10-12 10:31:33 -返回值 : cn.neusoft.myproject.utils.PageUtils@10f36e29
+2018-10-12 10:31:36 -请求地址 : http://localhost/main
+2018-10-12 10:31:36 -HTTP METHOD : GET
+2018-10-12 10:31:36 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.main
+2018-10-12 10:31:36 -参数 : []
+2018-10-12 10:31:36 -耗时 : 0
+2018-10-12 10:31:36 -返回值 : main
+2018-10-12 10:31:41 -请求地址 : http://localhost/sys/user/personal
+2018-10-12 10:31:41 -HTTP METHOD : GET
+2018-10-12 10:31:41 -CLASS_METHOD : cn.neusoft.myproject.controller.UserController.personal
+2018-10-12 10:31:41 -参数 : [{}]
+2018-10-12 10:31:41 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district`,`identity` from sys_user where user_id = ? 
+2018-10-12 10:31:41 -==> Parameters: 1(Long)
+2018-10-12 10:31:41 -<==      Total: 1
+2018-10-12 10:31:41 -耗时 : 208
+2018-10-12 10:31:41 -返回值 : system/user/personal
+2018-10-12 10:32:24 -请求地址 : http://localhost/sys/user/uploadImg
+2018-10-12 10:32:24 -HTTP METHOD : POST
+2018-10-12 10:32:24 -CLASS_METHOD : cn.neusoft.myproject.controller.UserController.uploadImg
+2018-10-12 10:32:24 -参数 : [org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@615ce256, {"x":-11.41945461945439,"y":37.94329127662465,"height":480.3950617283951,"width":480.3950617283951,"rotate":0}, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@76b22974]
+2018-10-12 10:32:24 -耗时 : 281
+2018-10-12 10:32:24 -返回值 : {msg=更新图像失败！, code=500}
+2018-10-12 10:32:52 -请求地址 : http://localhost/login
+2018-10-12 10:32:52 -HTTP METHOD : GET
+2018-10-12 10:32:52 -CLASS_METHOD : cn.neusoft.myproject.controller.LoginController.login
+2018-10-12 10:32:52 -参数 : []
+2018-10-12 10:32:52 -耗时 : 1
+2018-10-12 10:32:52 -返回值 : login

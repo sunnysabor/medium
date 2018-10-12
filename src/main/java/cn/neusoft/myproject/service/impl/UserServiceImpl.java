@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.imageio.ImageIO;
 
@@ -28,7 +27,7 @@ import cn.neusoft.myproject.utils.FileType;
 import cn.neusoft.myproject.utils.FileUtil;
 import cn.neusoft.myproject.utils.ImageUtils;
 import cn.neusoft.myproject.utils.MD5Utils;
-import cn.neusoft.myproject.vo.UserVO;
+import cn.neusoft.myproject.utils.UserVO;
 
 @Transactional
 @Service
